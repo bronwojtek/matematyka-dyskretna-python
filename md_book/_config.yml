@@ -6,7 +6,7 @@ logo: 'ran.png'
 
 # Short description about the book
 description: >-
-  Dodatek do książki Matematyka dyskretna wyd. II: wykłady z przykładami w języku Python
+  Dodatek do książki Matematyka dyskretna, wyd. II: wykłady z przykładami w języku Python
 
 execute:
 #  execute_notebooks           : auto
@@ -25,7 +25,7 @@ html:
 notebook_interface            : "notebook"
 
 repository:
-  url           : "https://github.com/bronwojtek/md_polish/"
+  url           : "https://github.com/bronwojtek/matematyka-dyskretna-python/"
   branch        : master
   path_to_book  : md_book
 

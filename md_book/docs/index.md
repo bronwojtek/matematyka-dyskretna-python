@@ -6,18 +6,15 @@
 
 <!-- #endregion -->
 
-Niniejszy dodatek stanowi integralną część książki **Matematyka dyskretna: wykłady z zadaniami dla studentów informatyki, Wyd. II** i zawiera programistyczną implementację wybranych problemów z podręcznika w języku Python.
+Niniejszy dodatek stanowi integralną część książki **Matematyka dyskretna, wyd. II: wykłady z zadaniami dla studentów informatyki** i zawiera proste programy w języku Python, ilustrujace wybrane problemy z podręcznika. 
 
 
-```{admonition} Linki
-:class: tip
+```{admonition} Odnośniki
+:class: important
 
-- Jupyter Book: 
-[https://bronwojtek.github.io/md_polish/docs/index.html](https://bronwojtek.github.io/md_polish/docs/index.html)
-
-- pdf i programy: [www.ifj.edu.pl/~broniows/md](https://www.ifj.edu.pl/~broniows/md) lub [www.ujk.edu.pl/~broniows/md](https://www.ujk.edu.pl/~broniows/md)
-
+Odnośniki do problemów wyjaśnianych w głównej części książki oznaczone sa wytłuszczoną czcionką.
 ```
+
 
 ```{admonition} Wymagania wstępne
 :class: important
@@ -32,11 +29,22 @@ Podstawową zaletą powstałych niedawno wykonywalnych książek jest możliwoś
 
 Aby wykonać programy należy pójść do strony 
 
-[https://bronwojtek.github.io/md_polish/docs/index.html](https://bronwojtek.github.io/md_polish/docs/index.html). 
+[https://bronwojtek.github.io/matematyka-dyskretna-python/docs/index.html](https://bronwojtek.github.io/matematyka-dyskretna-python/docs/index.html). 
 
 Po przejściu do konkretnego rozdziału w menu po lewej stronie (Rekurencja lub Grafy), w prawym górnym rogu ekranu należy kliknąć ikonę rakietki i wybrać Binder lub Colab. Po pewnym czasie w przeglądarce otworzy się notebook Jupytera, który jest do naszej dyspozycji. Ta najwygodniejsza metoda wykonuje program w chmurze obliczeniowej.  
 
 Alternatywnie, klikając na ikonę strzałki w dół, można pobrać kod i wykonać go lokalnie, otwierając jako notebook Jupytera np. w środowisku [anaconda](https://www.anaconda.com). Oczywiście, metoda lokalna wymaga wsześniejszej instalacji odpowiedniego oprogramowania. 
+
+```
+
+
+```{admonition} Linki
+:class: tip
+
+- Jupyter Book: 
+[https://bronwojtek.github.io/md_polish/docs/index.html](https://bronwojtek.github.io/md_polish/docs/index.html)
+
+- pdf i programy: [www.ifj.edu.pl/~broniows/md](https://www.ifj.edu.pl/~broniows/md) lub [www.ujk.edu.pl/~broniows/md](https://www.ujk.edu.pl/~broniows/md)
 
 ```
 
