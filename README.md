@@ -1,9 +1,8 @@
 # Matematyka dyskretna - dodatek
 
 Autor: Wojciech Broniowski
-Date:  31 August 2021
+Data:  17 August 2021
 ISBN: **978-83-962099-1-7** (pdf version)
-
 
 Dodatek do podręcznika **Matematyka dyskretna: wykłady z zadaniami dla studentów informatyki, wyd. II**, w postaci wykonywalnej książki, zawierający programy w języku Python ilustrujące wybrane zagadnienia. 
 
