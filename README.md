@@ -14,7 +14,7 @@ Książka przeznaczona jest dla studentów informatyki, a także dla zaawansowan
 
 Aby wykonać programy należy pójść do strony 
 
-[https://bronwojtek.github.io/md_polish/docs/index.html](https://bronwojtek.github.io/md_polish/docs/index.html). 
+[https://bronwojtek.github.io/md_polish/docs/index.html](https://bronwojtek.github.io/matematyka-dyskretna-python/docs/index.html)
 
 Po wybraniu konkretnego rozdziału w menu po lewej stronie (Rekurencja lub Grafy), w prawym górnym rogu ekranu należy kliknąć ikonę rakietki i wybrać Binder lub Colab. Po pewnym czasie w przeglądarce otworzy się notebook Jupytera, który jest do naszej dyspozycji. Ta najwygodniejsza metoda wykonuje program w chmurze obliczeniowej.  
 
@@ -23,7 +23,7 @@ Alternatywnie, klikając na ikonę strzałki w dół, można pobrać kod i wykon
 
 **Linki**:
 
-- Jupyter Book: [https://bronwojtek.github.io/md_polish/docs/index.html](https://bronwojtek.github.io/md_polish/docs/index.html)
+- Jupyter Book: [https://bronwojtek.github.io/md_polish/docs/index.html](https://bronwojtek.github.io/matematyka-dyskretna-python/docs/index.html)
 
 - pdf: file md_book_covers.pdf (xxx pages)
 
