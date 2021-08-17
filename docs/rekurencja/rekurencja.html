@@ -1,0 +1,1503 @@
+
+<!DOCTYPE html>
+
+<html lang="pl">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Rekurencja &#8212; Matematyka dyskretna - dodatek</title>
+    
+  <link href="../../_static/css/theme.css" rel="stylesheet" />
+  <link href="../../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/sphinx-book-theme.acff12b8f9c144ce68a297486a2fa670.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../../_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/translations.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <link rel="shortcut icon" href="../../_static/ran.png"/>
+    <link rel="index" title="Indeks" href="../../genindex.html" />
+    <link rel="search" title="Szukaj" href="../../search.html" />
+    <link rel="next" title="Grafy" href="../grafy/grafy.html" />
+    <link rel="prev" title="Matematyka dyskretna - dodatek" href="../index.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../../index.html">
+      
+      <img src="../../_static/ran.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Matematyka dyskretna - dodatek</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Przeszukaj tę książkę ..." aria-label="Przeszukaj tę książkę ..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <div class="bd-toc-item active">
+        <ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Rekurencja
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../grafy/grafy.html">
+   Grafy
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Przełącz nawigację" aria-controls="site-navigation"
+                title="Przełącz nawigację" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Pobierz tę stronę"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../../_sources/docs/rekurencja/rekurencja.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Pobierz plik źródłowy" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Drukuj do PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/bronwojtek/matematyka-dyskretna-python/"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Repozytorium źródłowe"><i
+                    class="fab fa-github"></i>magazyn</button></a>
+        <a class="issues-button"
+            href="https://github.com/bronwojtek/matematyka-dyskretna-python//issues/new?title=Issue%20on%20page%20%2Fdocs/rekurencja/rekurencja.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Otwórz problem"><i class="fas fa-lightbulb"></i>otwarty problem</button></a>
+        <a class="edit-button" href="https://github.com/bronwojtek/matematyka-dyskretna-python/edit/master/md_book/docs/rekurencja/rekurencja.ipynb"><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Edytuj tę strone"><i class="fas fa-pencil-alt"></i>zaproponuj edycję</button></a>
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Pełny ekran"
+        title="Pełny ekran"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/bronwojtek/matematyka-dyskretna-python/master?urlpath=tree/md_book/docs/rekurencja/rekurencja.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Uruchomić Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        <a class="colab-button" href="https://colab.research.google.com/github/bronwojtek/matematyka-dyskretna-python/blob/master/md_book/docs/rekurencja/rekurencja.ipynb"><button type="button" class="btn btn-secondary topbarbtn"
+                title="Uruchomić Colab" data-toggle="tooltip" data-placement="left"><img class="colab-button-logo"
+                    src="../../_static/images/logo_colab.png"
+                    alt="Interact on Colab">Colab</button></a>
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Zawartość
+            </div>
+            <nav id="bd-toc-nav">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#wieze-hanoi-a-id-hanoi-a">
+   Wieże Hanoi
+   <a id="hanoi">
+   </a>
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#ciag-fibonacciego">
+   Ciąg Fibonacciego
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#metoda-rownana-charakterystycznego">
+   Metoda równana charakterystycznego
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#bladzenie-przypadkowe">
+   Błądzenie przypadkowe
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#liczby-pseudolosowe">
+     Liczby pseudolosowe
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#ruina-gracza">
+     Ruina gracza
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#silnia-jako-rekurencja">
+   Silnia jako rekurencja
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#rekurencja-w-dwoch-wymiarach-a-id-d2-a">
+   Rekurencja w dwóch wymiarach
+   <a id="d2">
+   </a>
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#symbol-newtona">
+     Symbol Newtona
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#liczby-stirlinga-i-rodzaju-cyklowe">
+     Liczby Stirlinga I rodzaju (cyklowe)
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#liczby-stirlinga-ii-rodzaju-podzialowe">
+     Liczby Stirlinga II rodzaju (podziałowe)
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#zadania">
+   Zadania
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="rekurencja">
+<h1>Rekurencja<a class="headerlink" href="#rekurencja" title="Stały odnośnik do tego nagłówka">¶</a></h1>
+<p>Standardowe biblioteki użyte w programie:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span>   <span class="c1"># numeryka</span>
+<span class="kn">import</span> <span class="nn">math</span>    <span class="c1"># funkcje matematyczne</span>
+<span class="kn">import</span> <span class="nn">cmath</span>   <span class="c1"># liczby zespolone</span>
+<span class="kn">import</span> <span class="nn">random</span>  <span class="c1"># liczby losowe</span>
+<span class="kn">import</span> <span class="nn">time</span>    <span class="c1"># pomiar czasu</span>
+<span class="kn">import</span> <span class="nn">statistics</span> <span class="k">as</span> <span class="nn">st</span>         <span class="c1"># statystyka</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span> <span class="c1"># grafika</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="wieze-hanoi-a-id-hanoi-a">
+<h2>Wieże Hanoi <a id='hanoi'></a><a class="headerlink" href="#wieze-hanoi-a-id-hanoi-a" title="Stały odnośnik do tego nagłówka">¶</a></h2>
+<p>Na początek klasyczny przykład algorytmu rekurencyjnego z <strong>rozdz. 1.1</strong>.</p>
+<p>Etykiety krążków <strong>disc</strong> zdefiniowane są jako krotka („A”,”B”,”C”,”D”,…), gdzie potrzebujemy co najmniej tyle etykiet, ile wynosi używana później liczba krążków.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">disc</span><span class="o">=</span><span class="p">(</span><span class="s2">&quot;A&quot;</span><span class="p">,</span><span class="s2">&quot;B&quot;</span><span class="p">,</span><span class="s2">&quot;C&quot;</span><span class="p">,</span><span class="s2">&quot;D&quot;</span><span class="p">,</span><span class="s2">&quot;E&quot;</span><span class="p">)</span> <span class="c1"># użyjemy co najwyżej czterech krążków</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Poniższa funkcja realizuje algorytm rekurencyjny <strong>[1.1]</strong> (który tutaj wypisuje tylko kolejne instrukcje postępowania, tj. kroki algorytmu). Program <strong>han</strong> woła (dwakroć) sam siebie, zawsze z mniejszą o 1 liczbą krążków.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">han</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">init</span><span class="p">,</span> <span class="n">fin</span><span class="p">,</span> <span class="n">inter</span><span class="p">):</span> 
+    
+<span class="c1"># n - liczba krążków</span>
+<span class="c1"># init   - pręt, na którym są początkowo krążki</span>
+<span class="c1"># fin    - pręt, na którym mają się na koniec znaleźć krążki</span>
+<span class="c1"># inter  - pręt pośredni</span>
+
+    <span class="k">if</span> <span class="n">n</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>   <span class="c1"># wykonaj, jeśli są krążki   </span>
+        
+        <span class="n">han</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">init</span><span class="p">,</span> <span class="n">inter</span><span class="p">,</span> <span class="n">fin</span><span class="p">)</span>  <span class="c1"># przenieś n-1 krążków z init na inter</span>
+        
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Przenieś krążek&quot;</span><span class="p">,</span> <span class="n">disc</span><span class="p">[</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="s2">&quot;z pręta&quot;</span><span class="p">,</span> <span class="n">init</span><span class="p">,</span> <span class="s2">&quot;na pręt&quot;</span><span class="p">,</span> <span class="n">fin</span><span class="p">)</span>
+                <span class="c1"># przenieś krążek n z pręta init na fin (wypisz instrukcję)</span>
+            
+        <span class="n">han</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">inter</span><span class="p">,</span> <span class="n">fin</span><span class="p">,</span> <span class="n">init</span><span class="p">)</span>  <span class="c1"># przenieś n-1 krążków z inter na fin</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># wykonanie dla trzech krążków</span>
+<span class="n">han</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="s2">&quot;1&quot;</span><span class="p">,</span><span class="s2">&quot;3&quot;</span><span class="p">,</span><span class="s2">&quot;2&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Przenieś krążek A z pręta 1 na pręt 3
+Przenieś krążek B z pręta 1 na pręt 2
+Przenieś krążek A z pręta 3 na pręt 2
+Przenieś krążek C z pręta 1 na pręt 3
+Przenieś krążek A z pręta 2 na pręt 1
+Przenieś krążek B z pręta 2 na pręt 3
+Przenieś krążek A z pręta 1 na pręt 3
+</pre></div>
+</div>
+</div>
+</div>
+<p>Powyżej widzimy dokładnie „historyjkę” z <strong>[Rys. 1.2]</strong>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># wykonanie dla czterech krążków </span>
+<span class="n">han</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="s2">&quot;1&quot;</span><span class="p">,</span><span class="s2">&quot;2&quot;</span><span class="p">,</span><span class="s2">&quot;3&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Przenieś krążek A z pręta 1 na pręt 3
+Przenieś krążek B z pręta 1 na pręt 2
+Przenieś krążek A z pręta 3 na pręt 2
+Przenieś krążek C z pręta 1 na pręt 3
+Przenieś krążek A z pręta 2 na pręt 1
+Przenieś krążek B z pręta 2 na pręt 3
+Przenieś krążek A z pręta 1 na pręt 3
+Przenieś krążek D z pręta 1 na pręt 2
+Przenieś krążek A z pręta 3 na pręt 2
+Przenieś krążek B z pręta 3 na pręt 1
+Przenieś krążek A z pręta 2 na pręt 1
+Przenieś krążek C z pręta 3 na pręt 2
+Przenieś krążek A z pręta 1 na pręt 3
+Przenieś krążek B z pręta 1 na pręt 2
+Przenieś krążek A z pręta 3 na pręt 2
+</pre></div>
+</div>
+</div>
+</div>
+<p>Poniżej bardziej zaawansowana implementacja algorytmu, gdzie śledzimy kolejne stany (tj. ułożenia krążków) na prętach 1, 2, 3. Stany określone są jako łańcuchy znaków A, B, C, … etykietujących krążki, tak jak w <strong>rozdz. 1.1</strong>. Liczba kroków <strong>step</strong> określona jest jako <strong>global</strong>, ponieważ inicjalizujemy ją poza funkcją.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">han2</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">init</span><span class="p">,</span> <span class="n">fin</span><span class="p">,</span> <span class="n">inter</span><span class="p">):</span> 
+    
+<span class="c1"># n - liczba krążków</span>
+<span class="c1"># init   - pręt, na którym są początkowo krążki</span>
+<span class="c1"># fin    - pręt, na którym mają się na koniec znaleźć krążki</span>
+<span class="c1"># inter  - pręt pośredni</span>
+
+    <span class="k">global</span> <span class="n">step</span> <span class="c1"># liczba kroków</span>
+    
+    <span class="k">if</span> <span class="n">n</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>   <span class="c1"># zrób, jeśli są krążki                     </span>
+        <span class="n">han2</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">init</span><span class="p">,</span> <span class="n">inter</span><span class="p">,</span> <span class="n">fin</span><span class="p">)</span>  <span class="c1"># przenieś n-1 krążków z init na inter</span>
+        
+        <span class="n">fin</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">init</span><span class="o">.</span><span class="n">pop</span><span class="p">())</span>
+        <span class="n">step</span><span class="o">+=</span><span class="mi">1</span> <span class="c1"># licz kroki</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;krok&#39;</span><span class="p">,</span><span class="n">step</span><span class="p">,</span><span class="s2">&quot;:&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;1:&#39;</span><span class="p">,</span><span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">one</span><span class="p">))</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;2:&#39;</span><span class="p">,</span><span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">two</span><span class="p">))</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;3:&#39;</span><span class="p">,</span><span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">three</span><span class="p">))</span>
+       
+        <span class="n">han2</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">inter</span><span class="p">,</span> <span class="n">fin</span><span class="p">,</span> <span class="n">init</span><span class="p">)</span>  <span class="c1"># przenieś n-1 krążków z inter na fin</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Stan początkowy: wszystkie trzy krążki na pręcie &quot;1&quot;, </span>
+<span class="c1"># od największego C do najmniejszego A</span>
+<span class="n">one</span>   <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;C&#39;</span><span class="p">,</span> <span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="s1">&#39;A&#39;</span><span class="p">]</span>
+<span class="n">two</span>   <span class="o">=</span> <span class="p">[]</span>
+<span class="n">three</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="n">step</span><span class="o">=</span><span class="mi">0</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;krok&#39;</span><span class="p">,</span> <span class="n">step</span><span class="p">,</span> <span class="s2">&quot;:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;1:&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">one</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;2:&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">two</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;3:&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">three</span><span class="p">))</span>
+
+        
+<span class="c1"># initiate call from source A to target C with auxiliary B</span>
+<span class="n">han2</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="n">one</span><span class="p">,</span> <span class="n">three</span><span class="p">,</span> <span class="n">two</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>krok 0 :
+1: CBA
+2: 
+3: 
+krok 1 :
+1: CB
+2: 
+3: A
+krok 2 :
+1: C
+2: B
+3: A
+krok 3 :
+1: C
+2: BA
+3: 
+krok 4 :
+1: 
+2: BA
+3: C
+krok 5 :
+1: A
+2: B
+3: C
+krok 6 :
+1: A
+2: 
+3: CB
+krok 7 :
+1: 
+2: 
+3: CBA
+</pre></div>
+</div>
+</div>
+</div>
+<p>Jeśli interesuje nas tylko liczba kroków algorytmu Hanoi, implementujemy rekurencję <strong>[1.1]</strong> w nastepujacy sposób:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Ciąg Hanoi</span>
+<span class="k">def</span> <span class="nf">hanoi</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mi">1</span>
+    <span class="k">else</span><span class="p">:</span> 
+        <span class="k">return</span> <span class="mi">2</span><span class="o">*</span><span class="n">hanoi</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Możemy teraz sprawdzić równanie (1.2):</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">10</span><span class="p">):</span> <span class="nb">print</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">hanoi</span><span class="p">(</span><span class="n">n</span><span class="p">),</span> <span class="mi">2</span><span class="o">**</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1 1 1
+2 3 3
+3 7 7
+4 15 15
+5 31 31
+6 63 63
+7 127 127
+8 255 255
+9 511 511
+</pre></div>
+</div>
+</div>
+</div>
+<p>Pamietacie mnichów buddyjskich?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">hanoi</span><span class="p">(</span><span class="mi">64</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>18446744073709551615
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mi">2</span><span class="o">**</span><span class="mi">64</span><span class="o">-</span><span class="mi">1</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>18446744073709551615
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Zakładamy, że jeden ruch trwa 5 sekund i przeliczamy czas na lata</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="p">(</span><span class="mi">2</span><span class="o">**</span><span class="mi">64</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="mi">5</span><span class="o">/</span><span class="mi">60</span><span class="o">/</span><span class="mi">60</span><span class="o">/</span><span class="mi">24</span><span class="o">/</span><span class="mi">365</span>
+
+<span class="c1"># format liczby z wykladnikiem</span>
+<span class="n">y</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="si">%.1E</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">x</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;czas pracy mnichów:&quot;</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="s2">&quot;lat&quot;</span><span class="p">)</span>
+
+<span class="n">w</span><span class="o">=</span><span class="mf">13.7</span><span class="o">*</span><span class="mi">10</span><span class="o">**</span><span class="mi">9</span> <span class="c1"># wiek Wszechświata</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">x</span><span class="o">/</span><span class="n">w</span><span class="p">),</span><span class="s2">&quot;razy dłużej od wieku Wszechświata&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>czas pracy mnichów: 2.9E+12 lat
+213 razy dłużej od wieku Wszechświata
+</pre></div>
+</div>
+</div>
+</div>
+<p>Rekurencja z zadania <strong>[1.10]</strong> posiada <span class="math notranslate nohighlight">\(n^2\)</span> w miejsce <span class="math notranslate nohighlight">\(1\)</span>, co prowadzi do oczywistej modyfikacji:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># ciąg Hanoi, gdzie liczymy przeniesioną masę krążków</span>
+<span class="c1"># krążek n ma masę n**2</span>
+<span class="k">def</span> <span class="nf">hanoi_m</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mi">1</span>
+    <span class="k">else</span><span class="p">:</span> 
+        <span class="k">return</span> <span class="mi">2</span><span class="o">*</span><span class="n">hanoi_m</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">+</span><span class="n">n</span><span class="o">**</span><span class="mi">2</span>    
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">hanoi_m</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">11</span><span class="p">)]</span> <span class="c1"># tablica 10 pierwszych wyrazów</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1, 6, 21, 58, 141, 318, 685, 1434, 2949, 5998]
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="ciag-fibonacciego">
+<h2>Ciąg Fibonacciego<a class="headerlink" href="#ciag-fibonacciego" title="Stały odnośnik do tego nagłówka">¶</a></h2>
+<p>Ciąg Fibonacciego <strong>[1.8]</strong> implementujemy analogicznie do powyższych przykładów:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">fib</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mi">1</span>
+    <span class="k">elif</span> <span class="n">n</span><span class="o">==</span><span class="mi">2</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mi">1</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">fib</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">+</span><span class="n">fib</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">2</span><span class="p">)</span> <span class="c1"># suma dwóch poprzednich wyrazów</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fib</span><span class="p">(</span><span class="mi">9</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>34
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">fib</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">11</span><span class="p">)]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1, 1, 2, 3, 5, 8, 13, 21, 34, 55]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Kolejne ilorazy, zaokrąglone do 6 cyfr znaczących</span>
+<span class="p">[</span><span class="nb">round</span><span class="p">(</span><span class="n">fib</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">/</span><span class="n">fib</span><span class="p">(</span><span class="n">i</span><span class="p">),</span><span class="mi">6</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">16</span><span class="p">)]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1.0,
+ 2.0,
+ 1.5,
+ 1.666667,
+ 1.6,
+ 1.625,
+ 1.615385,
+ 1.619048,
+ 1.617647,
+ 1.618182,
+ 1.617978,
+ 1.618056,
+ 1.618026,
+ 1.618037,
+ 1.618033]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Powyższe ilorazy dążą do Złotego Podziału phi</span>
+<span class="n">phi</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="o">+</span><span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">5</span><span class="p">))</span><span class="o">/</span><span class="mf">2.</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">phi</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.618033988749895
+</pre></div>
+</div>
+</div>
+</div>
+<p>Jeśli chcemy utworzyć tablicę kolejnych wyrazów ciągu Fibonacciego, możemy postąpić następująco:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fi</span><span class="o">=</span><span class="p">[]</span>          <span class="c1"># pusta tablica</span>
+<span class="n">fi</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>   <span class="c1"># pierwszy wyraz</span>
+<span class="n">fi</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>   <span class="c1"># drugi wyraz </span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">20</span><span class="p">):</span>
+    <span class="n">fi</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">fi</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">2</span><span class="p">]</span><span class="o">+</span><span class="n">fi</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span> <span class="c1"># kolejne wyrazy</span>
+    
+<span class="nb">print</span><span class="p">(</span><span class="n">fi</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, 233, 377, 610, 987, 1597, 2584, 4181, 6765]
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="metoda-rownana-charakterystycznego">
+<h2>Metoda równana charakterystycznego<a class="headerlink" href="#metoda-rownana-charakterystycznego" title="Stały odnośnik do tego nagłówka">¶</a></h2>
+<p>(dla rekurencji liniowej rzędu 2, <strong>rozdz. 1.5</strong>)</p>
+<p>Zakładamy, że rekurencja dla ciągu <span class="math notranslate nohighlight">\(f_n\)</span> ma postać</p>
+<p><span class="math notranslate nohighlight">\(a f_n + b f_{n-1} + c f_{n-2} = 0\)</span>   (przy czym stała a jest różna od 0),</p>
+<p>np. dla ciagu Fibonacciego <span class="math notranslate nohighlight">\(a=1, b=-1, c=-1\)</span>. Rekurencja rzędu 2 wymaga dwóch warunków „początkowych”, znamy zatem dwa różne wyrazy ciagu, <span class="math notranslate nohighlight">\(n\)</span> i <span class="math notranslate nohighlight">\(m\)</span>. Słowo „początkowych” ujęte jest w cudzysłów, bowiem niekoniecznie <span class="math notranslate nohighlight">\(n=1\)</span>, <span class="math notranslate nohighlight">\(m=2\)</span>, jak w przypadku ciągu Fibonacciego. Wskaźniki <span class="math notranslate nohighlight">\(n\)</span> i <span class="math notranslate nohighlight">\(m \neq n\)</span> mogą być dowolne i wynikają z natury konkretnego problemu.</p>
+<p>Poniższe pomocnicze funkcje obliczają wyróżnik równania kwadratowego <span class="math notranslate nohighlight">\(\Delta\)</span> oraz jego pierwiastki:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># delta dla równania kwadratowego</span>
+<span class="k">def</span> <span class="nf">de</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">):</span>
+     <span class="k">return</span> <span class="n">b</span><span class="o">*</span><span class="n">b</span><span class="o">-</span><span class="mi">4</span><span class="o">*</span><span class="n">a</span><span class="o">*</span><span class="n">c</span>
+
+<span class="c1"># pierwiastki równania kwadratowego    </span>
+<span class="k">def</span> <span class="nf">x1x2</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">):</span>
+    <span class="n">d</span><span class="o">=</span><span class="n">de</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">,</span><span class="n">c</span><span class="p">)</span>  <span class="c1"># wyróżnik</span>
+    <span class="k">if</span> <span class="n">d</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">:</span>      <span class="c1"># dla d&gt;0 pierwiastki są rzeczywiste</span>
+        <span class="k">return</span> <span class="p">[(</span><span class="o">-</span><span class="n">b</span><span class="o">+</span><span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">d</span><span class="p">))</span><span class="o">/</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">a</span><span class="p">),(</span><span class="o">-</span><span class="n">b</span><span class="o">-</span><span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">d</span><span class="p">))</span><span class="o">/</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">a</span><span class="p">)]</span>
+    <span class="k">if</span> <span class="n">d</span><span class="o">&lt;</span><span class="mi">0</span><span class="p">:</span>      <span class="c1"># dla d&lt;0 pierwiastki są zespolone</span>
+        <span class="k">return</span> <span class="p">[(</span><span class="o">-</span><span class="n">b</span><span class="o">+</span><span class="n">cmath</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">d</span><span class="p">))</span><span class="o">/</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">a</span><span class="p">),(</span><span class="o">-</span><span class="n">b</span><span class="o">-</span><span class="n">cmath</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">d</span><span class="p">))</span><span class="o">/</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">a</span><span class="p">)]</span>
+    <span class="k">if</span> <span class="n">d</span><span class="o">==</span><span class="mi">0</span><span class="p">:</span>     <span class="c1"># dla d=0 jest jeden podwójny pierwiastek rzeczywisty</span>
+        <span class="k">return</span> <span class="o">-</span><span class="n">b</span><span class="o">/</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">a</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Oto poszczególne przypadki (symbol <strong>j</strong> oznacza w bibiotece <strong>cmath</strong> jednostkę urojoną):</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">de</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span> <span class="n">x1x2</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">1</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">de</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span> <span class="n">x1x2</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">de</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span> <span class="n">x1x2</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>5 [-0.3819660112501051, -2.618033988749895]
+-4 [(-1+1j), (-1-1j)]
+0 -1.0
+</pre></div>
+</div>
+</div>
+</div>
+<p>Liczby zespolone wprowadzamy używając <strong>j</strong> np. w następujący sposób:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mi">1</span><span class="n">j</span><span class="o">**</span><span class="mi">2</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(-1+0j)
+</pre></div>
+</div>
+</div>
+</div>
+<p>Algorytm <strong>[1.2]</strong> możemy zaprogramować w nastepujący sposób:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">sol_rec</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">,</span><span class="n">c</span><span class="p">,</span><span class="n">n</span><span class="p">,</span><span class="n">an</span><span class="p">,</span><span class="n">m</span><span class="p">,</span><span class="n">am</span><span class="p">,</span><span class="n">i</span><span class="p">):</span>    
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Rozwiąż rekurencję liniową rzędu 2</span>
+
+<span class="sd">    input:</span>
+<span class="sd">    a, b, c - parametry (a różne od 0)</span>
+<span class="sd">    n       - wskaźnik jednego znanego wyrazu</span>
+<span class="sd">    an      - i jego wartość</span>
+<span class="sd">    m       - wskaźnik drugiego znanego wyrazu (n różne od m)</span>
+<span class="sd">    am      - i jego wartość</span>
+<span class="sd">    i       - wskaźnik szukanego wyrazu</span>
+
+<span class="sd">    output:</span>
+<span class="sd">    wartość wyrazu i</span>
+<span class="sd">    &quot;&quot;&quot;</span>   
+    
+    <span class="k">if</span> <span class="n">de</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">,</span><span class="n">c</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>           <span class="c1"># dwa różne pierwiastki (delta różna od 0)</span>
+        <span class="p">[</span><span class="n">x1</span><span class="p">,</span> <span class="n">x2</span><span class="p">]</span><span class="o">=</span><span class="n">x1x2</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">)</span>
+        
+        <span class="c1"># ogólne rozwiązanie na stałe c1 i c2 </span>
+        <span class="n">c1</span><span class="o">=</span><span class="p">(</span><span class="n">an</span><span class="o">*</span><span class="n">x2</span><span class="o">**</span><span class="n">m</span> <span class="o">-</span> <span class="n">am</span><span class="o">*</span><span class="n">x2</span><span class="o">**</span><span class="n">n</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">x1</span><span class="o">**</span><span class="n">n</span><span class="o">*</span><span class="n">x2</span><span class="o">**</span><span class="n">m</span> <span class="o">-</span> <span class="n">x1</span><span class="o">**</span><span class="n">m</span><span class="o">*</span><span class="n">x2</span><span class="o">**</span><span class="n">n</span><span class="p">)</span>
+        <span class="n">c2</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="n">an</span><span class="o">*</span><span class="n">x1</span><span class="o">**</span><span class="n">m</span> <span class="o">+</span> <span class="n">am</span><span class="o">*</span><span class="n">x1</span><span class="o">**</span><span class="n">n</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">x1</span><span class="o">**</span><span class="n">n</span><span class="o">*</span><span class="n">x2</span><span class="o">**</span><span class="n">m</span> <span class="o">-</span> <span class="n">x1</span><span class="o">**</span><span class="n">m</span><span class="o">*</span><span class="n">x2</span><span class="o">**</span><span class="n">n</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">c1</span><span class="o">*</span><span class="n">x1</span><span class="o">**</span><span class="n">i</span><span class="o">+</span><span class="n">c2</span><span class="o">*</span><span class="n">x2</span><span class="o">**</span><span class="n">i</span> <span class="c1"># ogólna postać wyrazu i</span>
+    
+    <span class="k">else</span><span class="p">:</span>                        <span class="c1"># jeden pierwiastek (delta=0)        </span>
+        <span class="n">x</span><span class="o">=</span><span class="n">x1x2</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">)</span>
+        
+        <span class="c1"># ogólne rozwiązanie na stałe c1 i c2     </span>
+        <span class="n">c1</span><span class="o">=</span><span class="p">((</span><span class="n">am</span><span class="o">*</span><span class="n">n</span><span class="p">)</span><span class="o">/</span><span class="n">x</span><span class="o">**</span><span class="n">m</span> <span class="o">-</span> <span class="p">(</span><span class="n">an</span><span class="o">*</span><span class="n">m</span><span class="p">)</span><span class="o">/</span><span class="n">x</span><span class="o">**</span><span class="n">n</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="n">m</span><span class="p">)</span>
+        <span class="n">c2</span><span class="o">=</span><span class="p">(</span><span class="n">am</span><span class="o">/</span><span class="n">x</span><span class="o">**</span><span class="n">m</span> <span class="o">-</span> <span class="n">an</span><span class="o">/</span><span class="n">x</span><span class="o">**</span><span class="n">n</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">m</span> <span class="o">-</span> <span class="n">n</span><span class="p">)</span>  
+
+        <span class="k">return</span> <span class="p">(</span><span class="n">c1</span><span class="o">+</span><span class="n">c2</span><span class="o">*</span><span class="n">i</span><span class="p">)</span><span class="o">*</span><span class="n">x</span><span class="o">**</span><span class="n">i</span>    <span class="c1"># ogólna postać wyrazu i  </span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Poniżej sprawdzenie dla ciągu Fibonacciego. Ponieważ wiemy, że wyrazy ciągu są liczbami całkowitymi, w celu uzyskania czytelniejszego wydruku stosujemy funkcje <strong>real</strong> oraz <strong>int</strong>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">sol_rec</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="n">i</span><span class="p">))</span><span class="o">.</span><span class="n">real</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">11</span><span class="p">)]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0, 0, 1, 2, 4, 8, 13, 21, 34, 55]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Inne przykłady:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">round_complex</span><span class="p">(</span><span class="n">x</span><span class="p">):</span> <span class="c1"># zaokrąglanie liczb zespolonych</span>
+    <span class="k">return</span> <span class="nb">complex</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">real</span><span class="p">),</span><span class="nb">round</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">imag</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">round_complex</span><span class="p">(</span><span class="n">sol_rec</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="n">i</span><span class="p">))</span><span class="o">.</span><span class="n">real</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">11</span><span class="p">)]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1, 1, 0, -1, -1, 0, 1, 1, 0, -1]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="nb">round</span><span class="p">(</span><span class="n">sol_rec</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="n">i</span><span class="p">))</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">11</span><span class="p">)]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1, 1, -3, 5, -7, 9, -11, 13, -15, 17]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">round_complex</span><span class="p">(</span><span class="n">sol_rec</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="n">i</span><span class="p">))</span><span class="o">.</span><span class="n">real</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">17</span><span class="p">)]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1, 1, 0, -3, -9, -18, -27, -27, 0, 81, 243, 486, 729, 729, 0, -2187]
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="bladzenie-przypadkowe">
+<h2>Błądzenie przypadkowe<a class="headerlink" href="#bladzenie-przypadkowe" title="Stały odnośnik do tego nagłówka">¶</a></h2>
+<div class="section" id="liczby-pseudolosowe">
+<h3>Liczby pseudolosowe<a class="headerlink" href="#liczby-pseudolosowe" title="Stały odnośnik do tego nagłówka">¶</a></h3>
+<p>Symulowanie procesów stochastycznych wymaga zastosowania liczb pseudolosowych, wbudowanych we wszystkie zaawansowane języki programowania. Zaczynamy od przykładu kostki do gry <strong>(3.1)</strong>, używając biblioteki <strong>random</strong>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># kostka do gry: losowa liczba naturalna w zakresie od 1 do 6 </span>
+<span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">6</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>5
+</pre></div>
+</div>
+</div>
+</div>
+<p>Rzucamy 600000 razy i tworzymy histogram (por. <strong>rys. 3.1</strong>):</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># zbieramy wyniki kolejnych rzutów w tablicy</span>
+<span class="n">t</span><span class="o">=</span><span class="p">[</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">6</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">600000</span><span class="p">)]</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span><span class="n">dpi</span><span class="o">=</span><span class="mi">120</span><span class="p">)</span>                        <span class="c1"># rozmiar grafiki</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s1">&#39;both&#39;</span><span class="p">,</span> <span class="n">which</span><span class="o">=</span><span class="s1">&#39;major&#39;</span><span class="p">,</span> <span class="n">labelsize</span><span class="o">=</span><span class="mi">7</span><span class="p">)</span> <span class="c1"># rozmiar znaczników osi</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">facecolor</span><span class="o">=</span><span class="s1">&#39;green&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/rekurencja_57_0.png" src="../../_images/rekurencja_57_0.png" />
+</div>
+</div>
+<p>Widzimy, że każde oczko wypada po około 100000, czyli kostka jest dobra (niesfałszowana!).</p>
+</div>
+<div class="section" id="ruina-gracza">
+<h3>Ruina gracza<a class="headerlink" href="#ruina-gracza" title="Stały odnośnik do tego nagłówka">¶</a></h3>
+<p>W problemie ruiny gracza (<strong>rozdz. 1.7</strong>) losowanie odbywa się „sfałszowaną” monetą, gdzie prawdopodobieństwo uzyskania orła wynosi <span class="math notranslate nohighlight">\(p\)</span>, a reszki <span class="math notranslate nohighlight">\(q=1-p\)</span>. Poniżej tworzymy generator liczb losowych, który zwraca 1 z prawdopodobieństwem <span class="math notranslate nohighlight">\(p\)</span> oraz -1 z prawdopodobieństwem <span class="math notranslate nohighlight">\(q\)</span>. Uzyskanie 1 oznacza przejście do stanu posiadania większego o 1, a -1 do stanu posiadania mniejszego o 1 (zob. <strong>rys. 1.8</strong>).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">coin</span><span class="p">(</span><span class="n">p</span><span class="p">):</span>
+<span class="c1"># zwróć 1 z prawdopodobieństwem p lub -1 z prawdopodobieństwem q=1-p </span>
+
+    <span class="k">if</span> <span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span><span class="o">&lt;</span><span class="n">p</span><span class="p">:</span> <span class="c1"># gdy liczba losowa rozłożona jednorodnie </span>
+                              <span class="c1"># w przedziale (0,1) jest mniejsza od p </span>
+                              <span class="c1"># (tj. prawdopodobientwo tegoż wynosi p)</span>
+        <span class="k">return</span> <span class="mi">1</span>              <span class="c1"># zwróć 1</span>
+    <span class="k">else</span><span class="p">:</span>                     <span class="c1"># w przeciwnym razie</span>
+        <span class="k">return</span> <span class="o">-</span><span class="mi">1</span>             <span class="c1"># zwróć -1</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Sprawdzenie działania powyższej funkcji (analogicznie jak dla kostki do gry powyżej). Parametr <strong>weights</strong> zmienia wysokość słupków tak, aby odpowiadała ona względnej częstości uzyskania 1 lub -1.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">p</span><span class="o">=</span><span class="mf">0.4</span>      <span class="c1"># prawdopodobieństwo orła</span>
+<span class="n">nu</span><span class="o">=</span><span class="mi">100000</span>  <span class="c1"># liczba rzutów </span>
+<span class="n">t</span><span class="o">=</span><span class="p">[</span><span class="n">coin</span><span class="p">(</span><span class="n">p</span><span class="p">)</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">nu</span><span class="p">)]</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span><span class="n">dpi</span><span class="o">=</span><span class="mi">120</span><span class="p">)</span>                        <span class="c1"># rozmiar grafiki</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s1">&#39;both&#39;</span><span class="p">,</span> <span class="n">which</span><span class="o">=</span><span class="s1">&#39;major&#39;</span><span class="p">,</span> <span class="n">labelsize</span><span class="o">=</span><span class="mi">7</span><span class="p">)</span> <span class="c1"># rozmiar znaczników osi</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">facecolor</span><span class="o">=</span><span class="s1">&#39;green&#39;</span><span class="p">,</span><span class="n">weights</span><span class="o">=</span><span class="mi">1</span><span class="o">/</span><span class="n">nu</span><span class="o">*</span><span class="n">numpy</span><span class="o">.</span><span class="n">ones_like</span><span class="p">(</span><span class="n">t</span><span class="p">));</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/rekurencja_63_0.png" src="../../_images/rekurencja_63_0.png" />
+</div>
+</div>
+<p>Symulacja ruiny gracza jest nastepująca:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">time0</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>   <span class="c1"># do pomiaru czasu wykonania programu</span>
+
+<span class="n">n</span> <span class="o">=</span> <span class="mi">40000</span>       <span class="c1"># maksymalna liczba kroków (tj. pojedynczych gier dla jednego gracza)</span>
+<span class="n">p</span> <span class="o">=</span> <span class="mf">0.495</span>       <span class="c1"># prawdopodobieństwo wygrania w pojedynczej grze (uzyskania orła)</span>
+<span class="n">q</span> <span class="o">=</span> <span class="mi">1</span><span class="o">-</span><span class="n">p</span>         <span class="c1"># prawdopodobieństwo przegrania w pojedynczej grze</span>
+
+<span class="n">players</span>   <span class="o">=</span> <span class="mi">200</span> <span class="c1"># całkowita liczba graczy</span>
+<span class="n">players_b</span> <span class="o">=</span> <span class="mi">0</span>   <span class="c1"># aktualna liczba graczy, którzy rozbili bank</span>
+
+<span class="n">start</span> <span class="o">=</span> <span class="mi">100</span>     <span class="c1"># początkowa liczba monet u każdego z graczy</span>
+<span class="n">fin</span>   <span class="o">=</span> <span class="mi">200</span>     <span class="c1"># liczba monet u gracza, przy której następuje rozbicie banku</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">))</span> <span class="c1"># współrzędne x (nr kroku, tj. kolejnej pojedynczej gry)</span>
+    
+<span class="c1"># ustawienia rysunku</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span>                     <span class="c1"># rozmiar</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Ruina gracza, p=&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">p</span><span class="p">),</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">26</span><span class="p">)</span> <span class="c1"># tytuł</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>                                    <span class="c1"># zakresy osi</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">fin</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;krok&#39;</span><span class="p">,</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">24</span><span class="p">)</span>                     <span class="c1"># etykiety osi</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;stan posiadania&#39;</span><span class="p">,</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">24</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s1">&#39;both&#39;</span><span class="p">,</span> <span class="n">which</span><span class="o">=</span><span class="s1">&#39;major&#39;</span><span class="p">,</span> <span class="n">labelsize</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span> <span class="c1"># rozmiar znaczników osi</span>
+
+
+<span class="c1"># losowe kolory RGB dla poszczególnych graczy</span>
+<span class="n">col</span> <span class="o">=</span> <span class="p">[(</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">))</span> 
+        <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">players</span><span class="p">)]</span>
+
+<span class="c1"># czasy gry dla wszystkich, tych co rozbili bank i tych, co się spłukali</span>
+<span class="n">ti</span><span class="o">=</span><span class="p">[]</span> 
+<span class="n">ti_b</span><span class="o">=</span><span class="p">[]</span>
+<span class="n">ti_0</span><span class="o">=</span><span class="p">[]</span>
+
+<span class="c1"># pętla po graczach</span>
+<span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">players</span><span class="p">):</span>
+
+<span class="c1"># inicjalizuje macierze    </span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> 
+    <span class="n">i</span><span class="o">=</span><span class="mi">0</span>
+    <span class="n">y</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">=</span><span class="n">start</span>
+
+    <span class="k">while</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">:</span> 
+        <span class="n">i</span><span class="o">+=</span><span class="mi">1</span>
+        <span class="n">y</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">=</span><span class="n">y</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">coin</span><span class="p">(</span><span class="n">p</span><span class="p">)</span> 
+        <span class="k">if</span> <span class="n">y</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">==</span><span class="mi">0</span><span class="p">:</span>
+            <span class="n">ti_0</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>  <span class="c1"># spłukany po i grach</span>
+            <span class="k">break</span> 
+        <span class="k">if</span> <span class="n">y</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">==</span><span class="n">fin</span><span class="p">:</span>
+            <span class="n">players_b</span><span class="o">+=</span><span class="mi">1</span>
+            <span class="n">ti_b</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>  <span class="c1"># rozbił bank po i grach</span>
+            <span class="k">break</span>
+            
+    <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mf">0.01</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="nb">str</span><span class="p">(</span><span class="n">k</span><span class="o">+</span><span class="mi">1</span><span class="p">))</span>
+    <span class="n">ti</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+
+<span class="n">lw</span><span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">ti</span><span class="p">)</span>         <span class="c1"># najdłuższy czas gry</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mf">1.1</span><span class="o">*</span><span class="n">lw</span><span class="p">)</span>  <span class="c1"># zakres osi x o 10% dłuzszy od najdłuższego czsu gry </span>
+    
+<span class="c1"># wstawka tekstowa do rysunku</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="mf">0.85</span><span class="o">*</span><span class="n">lw</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mi">80</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="s2">&quot;spłukanych   &quot;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">ti_0</span><span class="p">)),</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="mf">0.85</span><span class="o">*</span><span class="n">lw</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mi">120</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="s2">&quot;rozbiło bank &quot;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">ti_b</span><span class="p">)),</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">);</span>
+
+<span class="c1"># pomiar czasu umożliwia oszacowanie jak długo potrwają obliczenia przy wydłużeniu danych</span>
+<span class="c1"># w naszym przypadku rośnie on liniowo z liczbą graczy</span>
+<span class="n">time1</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;czas wykonania symulacji:&quot;</span><span class="p">,</span> <span class="nb">round</span><span class="p">(</span><span class="n">time1</span> <span class="o">-</span> <span class="n">time0</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span><span class="s2">&quot;s&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>czas wykonania symulacji: 22.8 s
+</pre></div>
+</div>
+<img alt="../../_images/rekurencja_65_1.png" src="../../_images/rekurencja_65_1.png" />
+</div>
+</div>
+<p>Możemy porównać oszacowane z powyższej symulacji prawdopodobienstwo rozbicia banku (równe stosunkowi liczby graczy, którzy rozbili bank, do wszystkich graczy), z dokładnym wzorem na prawdopodobieństwo <strong>[1.45]</strong>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;oszacowane z symulacji prawd. rozbicia banku =&quot;</span><span class="p">,</span><span class="nb">round</span><span class="p">(</span><span class="n">players_b</span><span class="o">/</span><span class="n">players</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span>
+      <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">powinno być (dla b. dużej liczby graczy)&quot;</span><span class="p">,</span><span class="nb">round</span><span class="p">((</span><span class="mi">1</span><span class="o">-</span><span class="p">(</span><span class="n">q</span><span class="o">/</span><span class="n">p</span><span class="p">)</span><span class="o">**</span><span class="n">start</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="p">(</span><span class="n">q</span><span class="o">/</span><span class="n">p</span><span class="p">)</span><span class="o">**</span><span class="n">fin</span><span class="p">),</span><span class="mi">2</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>oszacowane z symulacji prawd. rozbicia banku = 0.1 
+powinno być (dla b. dużej liczby graczy) 0.12
+</pre></div>
+</div>
+</div>
+</div>
+<p>Podobnie, oszacowany średni czas gry porównyjemy do wzoru <strong>(1.48)</strong>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;średni czas gry:&quot;</span><span class="p">,</span><span class="nb">round</span><span class="p">(</span><span class="n">st</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">ti</span><span class="p">),</span><span class="mi">1</span><span class="p">),</span><span class="s2">&quot;, powinno być (dla b. dużej liczby graczy) &quot;</span><span class="p">,</span>
+      <span class="nb">round</span><span class="p">((</span><span class="o">-</span><span class="n">fin</span><span class="o">*</span><span class="p">(</span><span class="n">q</span><span class="o">/</span><span class="n">p</span><span class="p">)</span><span class="o">**</span><span class="n">start</span><span class="o">+</span><span class="n">start</span><span class="o">*</span><span class="p">(</span><span class="n">q</span><span class="o">/</span><span class="n">p</span><span class="p">)</span><span class="o">**</span><span class="n">fin</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="p">(</span><span class="n">q</span><span class="o">/</span><span class="n">p</span><span class="p">)</span><span class="o">**</span><span class="n">fin</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">p</span><span class="o">-</span><span class="n">q</span><span class="p">),</span><span class="mi">1</span><span class="p">))</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;średni czas gry dla tych, co rozbili bank:&quot;</span><span class="p">,</span><span class="nb">round</span><span class="p">(</span><span class="n">st</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">ti_b</span><span class="p">),</span><span class="mi">1</span><span class="p">))</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;średni czas gry dla tych, co się spłukali:&quot;</span><span class="p">,</span><span class="nb">round</span><span class="p">(</span><span class="n">st</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">ti_0</span><span class="p">),</span><span class="mi">1</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>średni czas gry: 8327.1 , powinno być (dla b. dużej liczby graczy)  7429.5
+średni czas gry dla tych, co rozbili bank: 7576.2
+średni czas gry dla tych, co się spłukali: 8058.3
+</pre></div>
+</div>
+</div>
+</div>
+<p>Widzimy, że średni czas gry dla graczy, którzy rozbili bank, jest dłuższy niż dla tych, co się spłukali (co jest oczywiste dla <span class="math notranslate nohighlight">\(p&lt;0.5\)</span>).</p>
+<p>Ciekawe jest popatrzyć na rozkład czasów gry dla poszczególnych graczy:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span><span class="n">dpi</span><span class="o">=</span><span class="mi">120</span><span class="p">)</span>                        <span class="c1"># rozmiar grafiki</span>
+
+<span class="n">num_bins</span> <span class="o">=</span> <span class="mi">25</span>   <span class="c1"># liczba przedziałów histogramu</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">ti</span><span class="p">,</span> <span class="n">num_bins</span><span class="p">,</span> <span class="n">facecolor</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;wszyscy&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">ti_b</span><span class="p">,</span> <span class="n">num_bins</span><span class="p">,</span> <span class="n">facecolor</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;rozbili bank&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Ruina gracza, p=&quot;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">p</span><span class="p">)</span><span class="o">+</span><span class="s2">&quot;, k=&quot;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">start</span><span class="p">)</span><span class="o">+</span><span class="s2">&quot;, n=&quot;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">fin</span><span class="p">),</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">9</span><span class="p">)</span> 
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;czas gry&#39;</span><span class="p">,</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">9</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;liczba graczy&#39;</span><span class="p">,</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">9</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s1">&#39;both&#39;</span><span class="p">,</span> <span class="n">which</span><span class="o">=</span><span class="s1">&#39;major&#39;</span><span class="p">,</span> <span class="n">labelsize</span><span class="o">=</span><span class="mi">7</span><span class="p">)</span> <span class="c1"># rozmiar znaczników osi</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">prop</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;size&#39;</span><span class="p">:</span><span class="mi">9</span><span class="p">});</span>                             <span class="c1"># legenda</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/rekurencja_71_0.png" src="../../_images/rekurencja_71_0.png" />
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="silnia-jako-rekurencja">
+<h2>Silnia jako rekurencja<a class="headerlink" href="#silnia-jako-rekurencja" title="Stały odnośnik do tego nagłówka">¶</a></h2>
+<p>W oczywisty sposób możemy rekurencyjnie obliczyć silnię:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">fact</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mi">1</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">n</span><span class="o">*</span><span class="n">fact</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fact</span><span class="p">(</span><span class="mi">7</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>5040
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># biblioteki matematyczne Pythona mają wbudowaną silnię, np.</span>
+<span class="n">math</span><span class="o">.</span><span class="n">factorial</span><span class="p">(</span><span class="mi">7</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>5040
+</pre></div>
+</div>
+</div>
+</div>
+<p>Sprawdzimy teraz, jak działa wzór Stirlinga z poprawką <strong>[2.9]</strong> (bierzemy tylko jeden człon poprawki <span class="math notranslate nohighlight">\(1/12n\)</span>):</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">stirling</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">math</span><span class="o">.</span><span class="n">pi</span><span class="o">*</span><span class="n">n</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="n">n</span><span class="o">/</span><span class="n">math</span><span class="o">.</span><span class="n">e</span><span class="p">)</span><span class="o">**</span><span class="n">n</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span><span class="o">+</span><span class="mi">1</span><span class="o">/</span><span class="p">(</span><span class="mi">12</span><span class="o">*</span><span class="n">n</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">20</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="n">math</span><span class="o">.</span><span class="n">factorial</span><span class="p">(</span><span class="n">n</span><span class="p">),</span>
+          <span class="nb">round</span><span class="p">((</span><span class="n">stirling</span><span class="p">(</span><span class="n">n</span><span class="p">)</span><span class="o">-</span><span class="n">math</span><span class="o">.</span><span class="n">factorial</span><span class="p">(</span><span class="n">n</span><span class="p">))</span><span class="o">/</span><span class="n">math</span><span class="o">.</span><span class="n">factorial</span><span class="p">(</span><span class="n">n</span><span class="p">)</span><span class="o">*</span><span class="mi">100</span><span class="p">,</span><span class="mi">3</span><span class="p">),</span><span class="s2">&quot;%&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1 1 -0.102 %
+2 2 -0.052 %
+3 6 -0.028 %
+4 24 -0.017 %
+5 120 -0.012 %
+6 720 -0.008 %
+7 5040 -0.006 %
+8 40320 -0.005 %
+9 362880 -0.004 %
+10 3628800 -0.003 %
+11 39916800 -0.003 %
+12 479001600 -0.002 %
+13 6227020800 -0.002 %
+14 87178291200 -0.002 %
+15 1307674368000 -0.001 %
+16 20922789888000 -0.001 %
+17 355687428096000 -0.001 %
+18 6402373705728000 -0.001 %
+19 121645100408832000 -0.001 %
+</pre></div>
+</div>
+</div>
+</div>
+<p>Widzimy, że przybliżenie działa bardzo dokładnie, do ułamka procenta, nawet dla małych <span class="math notranslate nohighlight">\(n\)</span>. Uwzględnienie kolejnych członów we wzorze <strong>[2.9]</strong> jeszcze bardziej ulepsza wynik.</p>
+</div>
+<div class="section" id="rekurencja-w-dwoch-wymiarach-a-id-d2-a">
+<h2>Rekurencja w dwóch wymiarach <a id='d2'></a><a class="headerlink" href="#rekurencja-w-dwoch-wymiarach-a-id-d2-a" title="Stały odnośnik do tego nagłówka">¶</a></h2>
+<div class="section" id="symbol-newtona">
+<h3>Symbol Newtona<a class="headerlink" href="#symbol-newtona" title="Stały odnośnik do tego nagłówka">¶</a></h3>
+<p>Skonstruujemy trójkąt Pascala, <strong>rys. 2.7</strong>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">newton</span><span class="o">=</span><span class="p">[]</span> <span class="c1"># inicjalizacja pustej tablicy</span>
+
+<span class="c1"># dodanie [1] jako elementu 0 tablicy</span>
+<span class="n">newton</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="mi">1</span><span class="p">])</span>
+
+<span class="c1"># zrobimy 12 wierszy</span>
+<span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">12</span><span class="p">):</span>
+    <span class="c1"># wiemy, że po bokach są jedynki, stąd [1]+  i   +[1]</span>
+    <span class="c1"># w środku pętla po k daje (n-1) elementów </span>
+    <span class="c1"># każdy jest sumą elemntów z wiersza wyżej w pozycji k-1 oraz k  </span>
+    <span class="n">newton</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="mi">1</span><span class="p">]</span><span class="o">+</span><span class="p">[</span><span class="n">newton</span><span class="p">[</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="n">k</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">+</span><span class="n">newton</span><span class="p">[</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="n">k</span><span class="p">]</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">n</span><span class="p">)]</span><span class="o">+</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Tablica <strong>newton</strong> jest dwuwymiarowa:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">newton</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[1],
+ [1, 1],
+ [1, 2, 1],
+ [1, 3, 3, 1],
+ [1, 4, 6, 4, 1],
+ [1, 5, 10, 10, 5, 1],
+ [1, 6, 15, 20, 15, 6, 1],
+ [1, 7, 21, 35, 35, 21, 7, 1],
+ [1, 8, 28, 56, 70, 56, 28, 8, 1],
+ [1, 9, 36, 84, 126, 126, 84, 36, 9, 1],
+ [1, 10, 45, 120, 210, 252, 210, 120, 45, 10, 1],
+ [1, 11, 55, 165, 330, 462, 462, 330, 165, 55, 11, 1]]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Ładniejszy wydruk uzyskujemy poprzez sformatowane wypisywanie:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">12</span><span class="p">):</span>
+    <span class="n">row_format</span> <span class="o">=</span><span class="s2">&quot;</span><span class="si">{:&gt;4}</span><span class="s2">&quot;</span> <span class="o">*</span> <span class="p">(</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">((</span><span class="mi">12</span><span class="o">-</span><span class="n">n</span><span class="p">)</span><span class="o">*</span><span class="s2">&quot;  &quot;</span><span class="p">,</span><span class="n">row_format</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="o">*</span><span class="n">newton</span><span class="p">[</span><span class="n">n</span><span class="p">]))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                            1
+                          1   1
+                        1   2   1
+                      1   3   3   1
+                    1   4   6   4   1
+                  1   5  10  10   5   1
+                1   6  15  20  15   6   1
+              1   7  21  35  35  21   7   1
+            1   8  28  56  70  56  28   8   1
+          1   9  36  84 126 126  84  36   9   1
+        1  10  45 120 210 252 210 120  45  10   1
+      1  11  55 165 330 462 462 330 165  55  11   1
+</pre></div>
+</div>
+</div>
+</div>
+<p>Sprawdzamy, że suma elementów w wierszu trójkąta Pascala daje <span class="math notranslate nohighlight">\(2^n\)</span>, zgodnie ze wzorem <strong>[2.14]</strong>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">12</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="nb">sum</span><span class="p">(</span><span class="n">newton</span><span class="p">[</span><span class="n">n</span><span class="p">]),</span><span class="mi">2</span><span class="o">**</span><span class="n">n</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1 1
+2 2
+4 4
+8 8
+16 16
+32 32
+64 64
+128 128
+256 256
+512 512
+1024 1024
+2048 2048
+</pre></div>
+</div>
+</div>
+</div>
+<p>Podobnie, suma elementów w wierszu trójkąta Pascala mnożonych naprzemiennie przez <span class="math notranslate nohighlight">\(-1\)</span> daje 0, zgodnie ze wzorem <strong>[2.15]</strong>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">12</span><span class="p">):</span>
+    <span class="n">s</span><span class="o">=</span><span class="mi">0</span>
+    <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">):</span>
+        <span class="n">s</span><span class="o">=</span><span class="n">s</span><span class="o">+</span><span class="n">newton</span><span class="p">[</span><span class="n">n</span><span class="p">][</span><span class="n">k</span><span class="p">]</span><span class="o">*</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">**</span><span class="n">k</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+</pre></div>
+</div>
+</div>
+</div>
+<p>A teraz liczby Fibonacciego, ukryte w trójkacie Pascala wg <strong>rys. [2.12]</strong>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">12</span><span class="p">):</span>
+    <span class="n">s</span><span class="o">=</span><span class="mi">0</span>
+    <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="o">//</span><span class="mi">2</span><span class="o">+</span><span class="mi">1</span><span class="p">):</span>
+        <span class="n">s</span><span class="o">=</span><span class="n">s</span><span class="o">+</span><span class="n">newton</span><span class="p">[</span><span class="n">n</span><span class="o">-</span><span class="n">k</span><span class="p">][</span><span class="n">k</span><span class="p">]</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1
+1
+2
+3
+5
+8
+13
+21
+34
+55
+89
+144
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="liczby-stirlinga-i-rodzaju-cyklowe">
+<h3>Liczby Stirlinga I rodzaju (cyklowe)<a class="headerlink" href="#liczby-stirlinga-i-rodzaju-cyklowe" title="Stały odnośnik do tego nagłówka">¶</a></h3>
+<p>Wzory z <strong>tw. 4.1</strong>. Procedura jest analogiczna do trójkąta Pascala, jedynie [0] dodane po lewej stronie i inna rekurencja:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">stir_c</span><span class="o">=</span><span class="p">[]</span>
+<span class="n">stir_c</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="mi">1</span><span class="p">])</span>
+
+<span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">12</span><span class="p">):</span>
+    <span class="n">stir_c</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="mi">0</span><span class="p">]</span><span class="o">+</span><span class="p">[</span><span class="n">stir_c</span><span class="p">[</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="n">k</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">+</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="n">stir_c</span><span class="p">[</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="n">k</span><span class="p">]</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">n</span><span class="p">)]</span><span class="o">+</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">9</span><span class="p">):</span>
+    <span class="n">row_format</span> <span class="o">=</span><span class="s2">&quot;</span><span class="si">{:&gt;6}</span><span class="s2">&quot;</span> <span class="o">*</span> <span class="p">(</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">row_format</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="o">*</span><span class="n">stir_c</span><span class="p">[</span><span class="n">n</span><span class="p">]))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>     1
+     0     1
+     0     1     1
+     0     2     3     1
+     0     6    11     6     1
+     0    24    50    35    10     1
+     0   120   274   225    85    15     1
+     0   720  1764  1624   735   175    21     1
+     0  5040 13068 13132  6769  1960   322    28     1
+</pre></div>
+</div>
+</div>
+</div>
+<p>Suma elementów w wierszu daje n! - liczbę wszystkich permutacji:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">12</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="nb">sum</span><span class="p">(</span><span class="n">stir_c</span><span class="p">[</span><span class="n">n</span><span class="p">]),</span><span class="n">math</span><span class="o">.</span><span class="n">factorial</span><span class="p">(</span><span class="n">n</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1 1
+1 1
+2 2
+6 6
+24 24
+120 120
+720 720
+5040 5040
+40320 40320
+362880 362880
+3628800 3628800
+39916800 39916800
+</pre></div>
+</div>
+</div>
+</div>
+<p>Suma elementów w wierszu mnożonych naprzemiennie przez <span class="math notranslate nohighlight">\(-1\)</span> daje 0, począwszy od <span class="math notranslate nohighlight">\(n=2\)</span></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">12</span><span class="p">):</span>
+    <span class="n">s</span><span class="o">=</span><span class="mi">0</span>
+    <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">):</span>
+        <span class="n">s</span><span class="o">=</span><span class="n">s</span><span class="o">+</span><span class="n">stir_c</span><span class="p">[</span><span class="n">n</span><span class="p">][</span><span class="n">k</span><span class="p">]</span><span class="o">*</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">**</span><span class="n">k</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1
+-1
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="liczby-stirlinga-ii-rodzaju-podzialowe">
+<h3>Liczby Stirlinga II rodzaju (podziałowe)<a class="headerlink" href="#liczby-stirlinga-ii-rodzaju-podzialowe" title="Stały odnośnik do tego nagłówka">¶</a></h3>
+<p>Wzory z <strong>tw. 4.2</strong>. Procedura jest analogiczna do trójkąta Pascala, jedynie [0] dodane po lewej stronie i inna rekurencja:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">stir_p</span><span class="o">=</span><span class="p">[]</span>
+<span class="n">stir_p</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="mi">1</span><span class="p">])</span>
+
+<span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">12</span><span class="p">):</span>
+    <span class="n">stir_p</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="mi">0</span><span class="p">]</span><span class="o">+</span><span class="p">[</span><span class="n">stir_p</span><span class="p">[</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="n">k</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">+</span><span class="n">k</span><span class="o">*</span><span class="n">stir_p</span><span class="p">[</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="n">k</span><span class="p">]</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">n</span><span class="p">)]</span><span class="o">+</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
+    <span class="n">row_format</span> <span class="o">=</span><span class="s2">&quot;</span><span class="si">{:&gt;5}</span><span class="s2">&quot;</span> <span class="o">*</span> <span class="p">(</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">row_format</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="o">*</span><span class="n">stir_p</span><span class="p">[</span><span class="n">n</span><span class="p">]))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    1
+    0    1
+    0    1    1
+    0    1    3    1
+    0    1    7    6    1
+    0    1   15   25   10    1
+    0    1   31   90   65   15    1
+    0    1   63  301  350  140   21    1
+    0    1  127  966 1701 1050  266   28    1
+    0    1  255 3025 7770 6951 2646  462   36    1
+</pre></div>
+</div>
+</div>
+</div>
+<p>Sumy w poszczególnych wierszach tworzą liczby Bella, zgodnie ze wzorem <strong>[4.6]</strong>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">12</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="nb">sum</span><span class="p">(</span><span class="n">stir_p</span><span class="p">[</span><span class="n">n</span><span class="p">]))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0 1
+1 1
+2 2
+3 5
+4 15
+5 52
+6 203
+7 877
+8 4140
+9 21147
+10 115975
+11 678570
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="zadania">
+<h2>Zadania<a class="headerlink" href="#zadania" title="Stały odnośnik do tego nagłówka">¶</a></h2>
+<p>Wszystkie zadania dotyczą programowania w Pythonie. Zadania „teoretyczne” znajduja się w podstawowej części książki.</p>
+<ol class="simple">
+<li><p>Utwórz funkcję realizującą rekurencję pierwszego rzędu z członem niejednorodnym postaci a+b*n (np. problem dzielenia pizzy z zad. [1.2]).</p></li>
+<li><p>Oblicz i narysuj trójkąt liczb Bella z rys. [4.5].</p></li>
+<li><p>Oblicz i narysuj trójkąt partycji <span class="math notranslate nohighlight">\(p(n,k)\)</span> ze wzoru [4.20],  rys. [4.11].</p></li>
+<li><p>Oblicz i narysuj trójkąt partycji <span class="math notranslate nohighlight">\(q(n,k)\)</span> ze wzoru [4.24],  rys. [4.13].</p></li>
+<li><p>Uruchom program ilustrujący algorytm Kratsuby-Ofmana (rozdz. [1.8]) ze strony
+<a class="reference external" href="http://www.codeandgadgets.com/karatsuba-multiplication-python/">www.codeandgadgets.com/karatsuba-multiplication-python/</a> i przedyskutuj wyniki.</p></li>
+</ol>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./docs/rekurencja"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+        <div class='prev-next-bottom'>
+            
+    <a class='left-prev' id="prev-link" href="../index.html" title="previous page">Matematyka dyskretna  <br> - dodatek</a>
+    <a class='right-next' id="next-link" href="../grafy/grafy.html" title="next page">Grafy</a>
+
+        </div>
+        
+        </div>
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          Przez Wojciech Broniowski<br/>
+        
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  
+  </body>
+</html>
