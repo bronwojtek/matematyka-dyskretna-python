@@ -24,6 +24,7 @@ html:
 # Interact link settings
 notebook_interface            : "notebook"
 
+
 repository:
   url           : "https://github.com/bronwojtek/matematyka-dysketna-python/"
   branch        : master
