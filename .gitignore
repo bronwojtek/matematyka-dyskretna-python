@@ -1,0 +1,11 @@
+# python & jupyter
+md_book/_build/*
+.ipynb_checkpoints
+__pycache__/
+
+# private scripts
+g
+
+# os & tools
+.DS_Store
+.idea
