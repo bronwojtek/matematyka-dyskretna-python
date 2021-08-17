@@ -1,5 +1,6 @@
 # python & jupyter
 md_book/_build/*
+md_book/docs/covers/*
 .ipynb_checkpoints
 __pycache__/
 
