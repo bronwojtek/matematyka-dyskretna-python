@@ -26,7 +26,7 @@ notebook_interface            : "notebook"
 
 
 repository:
-  url           : "https://github.com/bronwojtek/matematyka-dysketna-python/"
+  url           : "https://github.com/bronwojtek/matematyka-dyskretna-python/"
   branch        : master
   path_to_book  : md_book
 
