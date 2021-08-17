@@ -1,5 +1,5 @@
 format: jb-book
 root: docs/index
 chapters:
-- file: docs/rekurencja/rekurencja
-- file: docs/grafy/grafy
+- file: docs/rekurencja
+- file: docs/grafy
