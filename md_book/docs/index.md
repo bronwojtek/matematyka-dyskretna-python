@@ -6,7 +6,7 @@
 
 <!-- #endregion -->
 
-Niniejsza wykonywalna książka stanowi integralną część podręcznika **Matematyka dyskretna, wyd. II: wykłady z przykładami w języku Python** i zawiera proste programy w ilustrujace wybrane problemy z rekurencji i teorii grafów. 
+Niniejsza wykonywalna książka stanowi integralną część podręcznika **Matematyka dyskretna, wyd. II: wykłady z przykładami w języku Python** i zawiera proste programy ilustrujace wybrane problemy z rekurencji i teorii grafów. 
 
 
 ```{admonition} Odnośniki
