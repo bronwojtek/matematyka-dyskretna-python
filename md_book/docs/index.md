@@ -1,10 +1,10 @@
-<!-- #region -->
-# Matematyka dyskretna  <br> - przykłady w języku Python
+<!-- # $~$ -->
 
+
+# Matematyka dyskretna  <br> - przykłady w języku Python
 
 [**Wojciech Broniowski**](https://www.ujk.edu.pl/~broniows)
 
-<!-- #endregion -->
 
 Niniejsza wykonywalna książka stanowi integralną część podręcznika **Matematyka dyskretna, wyd. II: wykłady z przykładami w języku Python** i zawiera proste programy ilustrujace wybrane problemy z rekurencji i teorii grafów. 
 
