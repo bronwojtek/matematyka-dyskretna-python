@@ -4,7 +4,7 @@ Autor: Wojciech Broniowski
 Data:  17 August 2021
 ISBN: **978-83-962099-1-7** (pdf version)
 
-Dodatek do podręcznika **Matematyka dyskretna, wyd. II: wykłady z przykładami w języku python** w postaci wykonywalnej książki, zawierający programy w języku Python ilustrujące wybrane zagadnienia rekurencji i teorii grafów. 
+Część podręcznika **Matematyka dyskretna, wyd. II: wykłady z przykładami w języku Python** w postaci wykonywalnej książki, zawierająca programy ilustrujące wybrane zagadnienia rekurencji i teorii grafów. 
 
 Książka przeznaczona jest dla studentów informatyki, a także dla zaawansowanych uczniów szkół średnich i ich nauczycieli.
 
@@ -23,6 +23,6 @@ Alternatywnie, klikając na ikonę strzałki w dół, można pobrać kod i wykon
 
 - Jupyter Book: [https://bronwojtek.github.io/matematyka-dyskretna-python/docs/index.html](https://bronwojtek.github.io/matematyka-dyskretna-python/docs/index.html)
 
-- pdf całej książki: md_book_covers.pdf (xxx pages)
+- pdf całej książki: md_book_covers.pdf (250 stron)
 
 - wersje źródłowe programów: [www.ifj.edu.pl/~broniows/md](https://www.ifj.edu.pl/~broniows/md) lub [www.ujk.edu.pl/~broniows/md](https://www.ujk.edu.pl/~broniows/md)

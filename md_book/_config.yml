@@ -1,15 +1,20 @@
-#title: "Matematyka dyskretna - dodatek"
-#author: "Wojciech Broniowski"
-#email: "Wojciech.Broniowski@ujk.edu.pl"
-#release: "1"
-#logo: 'ran.png'
+# wersja do wykonywalnej ksiąxki ------------
+title: "Matematyka dyskretna - przykłady w języku Python"
+author: "Wojciech Broniowski"
+# -------------------------------------------
 
-title: "Dodatek"
-author: ""
+# wersja do papierowej książki --------------
+# title: "Przykłady w języku Python"
+# author: ""
+#--------------------------------------------
+
+email: "Wojciech.Broniowski@ujk.edu.pl"
+release: "1"
+logo: 'ran.png'
 
 # Short description about the book
 description: >-
-  Dodatek do książki Matematyka dyskretna, wyd. II: wykłady z przykładami w języku Python
+  Część książki Matematyka dyskretna, wyd. II: wykłady z przykładami w języku Python
 
 execute:
 #  execute_notebooks           : auto
@@ -26,7 +31,6 @@ html:
 
 # Interact link settings
 notebook_interface            : "notebook"
-
 
 repository:
   url           : "https://github.com/bronwojtek/matematyka-dyskretna-python/"
@@ -46,7 +50,7 @@ repository:
 launch_buttons:
 #  notebook_interface: classic #jupyterlab
   binderhub_url: https://mybinder.org
-  colab_url: https://colab.research.google.com
+#  colab_url: https://colab.research.google.com
 
 # LaTeX settings
 # bibtex_bibfiles:

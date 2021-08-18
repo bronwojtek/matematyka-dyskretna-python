@@ -1,18 +1,18 @@
 <!-- #region -->
-# Matematyka dyskretna  <br> - dodatek
+# Matematyka dyskretna  <br> - przykłady w języku Python
 
 
 [**Wojciech Broniowski**](https://www.ujk.edu.pl/~broniows)
 
 <!-- #endregion -->
 
-Niniejszy dodatek stanowi integralną część książki **Matematyka dyskretna, wyd. II: wykłady z zadaniami dla studentów informatyki** i zawiera proste programy w języku Python, ilustrujace wybrane problemy z podręcznika. 
+Niniejsza wykonywalna książka stanowi integralną część podręcznika **Matematyka dyskretna, wyd. II: wykłady z przykładami w języku Python** i zawiera proste programy w ilustrujace wybrane problemy z rekurencji i teorii grafów. 
 
 
 ```{admonition} Odnośniki
 :class: important
 
-Odnośniki do problemów wyjaśnianych w głównej części książki oznaczone są klamrami i wytłuszczoną czcionką.
+Odnośniki do problemów wyjaśnianych w pierwszej części książki oznaczone są klamrami i wytłuszczoną czcionką.
 ```
 
 
@@ -31,7 +31,7 @@ Aby wykonać programy należy pójść do strony
 
 [https://bronwojtek.github.io/matematyka-dyskretna-python/docs/index.html](https://bronwojtek.github.io/matematyka-dyskretna-python/docs/index.html). 
 
-Po wybraniu konkretnego rozdziału w menu po lewej stronie (Rekurencja lub Grafy), w prawym górnym rogu ekranu należy kliknąć ikonę rakietki i wybrać Binder. Po pewnym, dość długim za pierwszym razem czasie, w przeglądarce otworzy się notebook Jupytera, który jest do naszej dyspozycji. Ta najwygodniejsza metoda wykonuje program w chmurze obliczeniowej.  
+Po wybraniu konkretnego rozdziału w menu po lewej stronie (Rekurencja lub Grafy), w prawym górnym rogu ekranu należy kliknąć ikonę rakietki i wybrać Binder. Po pewnym, za pierwszym razem dość długim czasie, w przeglądarce otworzy się notebook Jupytera, który jest do naszej dyspozycji. Ta najwygodniejsza metoda wykonuje program w chmurze obliczeniowej.  
 
 Alternatywnie, klikając na ikonę strzałki w dół, można pobrać kod i wykonać go lokalnie, otwierając jako notebook Jupytera np. w środowisku [anaconda](https://www.anaconda.com). Oczywiście, metoda lokalna wymaga wsześniejszej instalacji odpowiedniego oprogramowania. 
 
@@ -43,7 +43,7 @@ Alternatywnie, klikając na ikonę strzałki w dół, można pobrać kod i wykon
 - Jupyter Book: 
 [https://bronwojtek.github.io/matematyka-dyskretna-python/docs/index.html](https://bronwojtek.github.io/matematyka-dyskretna-python/docs/index.html)
 
-- pdf i programy: [www.ifj.edu.pl/~broniows/md](https://www.ifj.edu.pl/~broniows/md) lub [www.ujk.edu.pl/~broniows/md](https://www.ujk.edu.pl/~broniows/md)
+- pdf całej książki i programy: [www.ifj.edu.pl/~broniows/md](https://www.ifj.edu.pl/~broniows/md) lub [www.ujk.edu.pl/~broniows/md](https://www.ujk.edu.pl/~broniows/md)
 
 ```
 
