@@ -1,10 +1,12 @@
 # Matematyka dyskretna - przykłady w języku Python
 
 Autor: Wojciech Broniowski
+
 Data:  18 August 2021
+
 ISBN: **978-83-962099-1-7** (pdf całej książki)
 
-Część podręcznika **Matematyka dyskretna, wyd. II: wykłady z przykładami w języku Python** w postaci wykonywalnej książki, zawierająca programy ilustrujące wybrane zagadnienia rekurencji i teorii grafów. 
+Niniejsze repozytorium zawiera integralną część podręcznika **Matematyka dyskretna, wyd. II: wykłady z przykładami w języku Python** w postaci wykonywalnej książki a programami ilustrującymi wybrane zagadnienia rekurencji i teorii grafów. 
 
 Książka przeznaczona jest dla studentów informatyki, a także dla zaawansowanych uczniów szkół średnich i ich nauczycieli.
 
