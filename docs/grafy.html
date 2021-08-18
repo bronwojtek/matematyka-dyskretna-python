@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Grafy &#8212; Matematyka dyskretna - dodatek</title>
+    <title>Grafy &#8212; Matematyka dyskretna - przykłady w języku Python</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet" />
   <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
@@ -77,7 +77,7 @@
       <img src="../_static/ran.png" class="logo" alt="logo">
       
       
-      <h1 class="site-logo" id="site-title">Matematyka dyskretna - dodatek</h1>
+      <h1 class="site-logo" id="site-title">Matematyka dyskretna - przykłady w języku Python</h1>
       
     </a>
 </div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
@@ -188,11 +188,6 @@
         
         
         
-        <a class="colab-button" href="https://colab.research.google.com/github/bronwojtek/matematyka-dyskretna-python/blob/master/md_book/docs/grafy.ipynb"><button type="button" class="btn btn-secondary topbarbtn"
-                title="Uruchomić Colab" data-toggle="tooltip" data-placement="left"><img class="colab-button-logo"
-                    src="../_static/images/logo_colab.png"
-                    alt="Interact on Colab">Colab</button></a>
-        
         
     </div>
 </div>
@@ -223,8 +218,8 @@
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#badanie-grafu">
-   Badanie grafu
+  <a class="reference internal nav-link" href="#badanie-grafow">
+   Badanie grafów
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -294,17 +289,19 @@
                 
   <div class="section" id="grafy">
 <h1>Grafy<a class="headerlink" href="#grafy" title="Stały odnośnik do tego nagłówka">¶</a></h1>
-<p>Do analizy grafów stosujemy popularną bibliotekę <a class="reference external" href="https://networkx.github.io">networkx</a>. Niniejszy kod został przygotowany z wersją 2.5 tego oprogramowania. Uwaga: wyższe wersje <strong>networkx</strong> niekoniecznie muszą być kompatybilne.</p>
+<p>Do analizy grafów stosujemy popularną bibliotekę <a class="reference external" href="https://networkx.github.io">networkx</a>. Niniejszy kod został przygotowany z wersją 2.6.2 tego oprogramowania oraz z wersją 3.8.11 Pythona. Uwaga: wyższe wersje <strong>networkx</strong> niekoniecznie muszą być kompatybilne.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">networkx</span> <span class="k">as</span> <span class="nn">nx</span>  <span class="c1"># popularna biblioteka do analizy grafów</span>
 <span class="kn">from</span> <span class="nn">networkx.algorithms</span> <span class="kn">import</span> <span class="n">approximation</span> <span class="k">as</span> <span class="n">nalg</span>   <span class="c1"># algorytmy na grafach</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;wersja:&quot;</span><span class="p">,</span> <span class="n">nx</span><span class="o">.</span><span class="n">__version__</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;networkx:&quot;</span><span class="p">,</span> <span class="n">nx</span><span class="o">.</span><span class="n">__version__</span><span class="p">)</span>
+<span class="o">!</span>python --version
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>wersja: 2.5
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>networkx: 2.6.2
+Python 3.8.11
 </pre></div>
 </div>
 </div>
@@ -324,7 +321,7 @@
 <p>Ustawiamy domyślne parametry dla rozmiaru i rozdzielczości wykresów:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s2">&quot;figure.figsize&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mf">2.3</span><span class="p">)</span>  <span class="c1"># rozmiar x i y w calach</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s2">&quot;figure.figsize&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mf">2.3</span><span class="p">)</span>  <span class="c1"># rozmiar x i y wykresów w calach</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s2">&quot;figure.dpi&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">120</span>          <span class="c1"># rozdzielczość dpi</span>
 </pre></div>
 </div>
@@ -341,7 +338,8 @@
 
 <span class="c1"># narysuj graf z parametrami grafiki</span>
 <span class="n">nx</span><span class="o">.</span><span class="n">draw_networkx</span><span class="p">(</span><span class="n">G</span><span class="p">,</span><span class="n">node_size</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span><span class="n">font_size</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span><span class="n">font_color</span><span class="o">=</span><span class="s1">&#39;white&#39;</span><span class="p">,</span><span class="n">font_weight</span><span class="o">=</span><span class="s1">&#39;bold&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;off&#39;</span><span class="p">);</span> <span class="c1"># usuń ramkę</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;off&#39;</span><span class="p">)</span> <span class="c1"># usuń ramkę</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -361,7 +359,8 @@
 
 <span class="c1"># narysuj graf z parametrami grafiki</span>
 <span class="n">nx</span><span class="o">.</span><span class="n">draw_networkx</span><span class="p">(</span><span class="n">G</span><span class="p">,</span><span class="n">node_size</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span><span class="n">font_size</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span><span class="n">font_color</span><span class="o">=</span><span class="s1">&#39;white&#39;</span><span class="p">,</span><span class="n">font_weight</span><span class="o">=</span><span class="s1">&#39;bold&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;off&#39;</span><span class="p">);</span>                     <span class="c1"># usuń ramkę</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;off&#39;</span><span class="p">)</span>           
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -371,7 +370,7 @@
 </div>
 <div class="note admonition">
 <p class="admonition-title">Rozłożenie wierzchołków</p>
-<p>Jeśli wykonamy powyższą komórkę ponownie, układ wierzchołów będzie inny. Wynika to stąd, że <strong>networkx</strong> ustawia je losowo (dla danego typu layoutu, o czym póżniej), więc grafika jest za każdym razem inna.</p>
+<p>Jeśli wykonamy powyższą komórkę ponownie, układ wierzchołów może być inny. Wynika to stąd, że <strong>networkx</strong> ustawia je wg pewnej losowej procedury.</p>
 </div>
 <p>Dla danego grafu możemy „wyłowić” jego wierzchołki i krawędzie:</p>
 <div class="cell docutils container">
@@ -425,7 +424,7 @@
 </div>
 </div>
 <p>Powyższe oznacza, że w <span class="math notranslate nohighlight">\(G\)</span> mamy jeden wierzchołek stopnia 0 (izolowany), dwa stopnia 1 i jeden stopnia 2.</p>
-<p>Możemy też zadawać położenie wierzchołków na płaszczyżnie, co jest bardzo przydatne w rysowaniu grafów:</p>
+<p>Możemy też jawnie zadać położenie wierzchołków na płaszczyżnie, co jest bardzo przydatne w rysowaniu grafów:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">G</span><span class="o">=</span><span class="n">nx</span><span class="o">.</span><span class="n">Graph</span><span class="p">()</span>  <span class="c1"># inicjalizacja - graf pusty</span>
@@ -457,7 +456,8 @@
 <span class="n">nx</span><span class="o">.</span><span class="n">draw_networkx_edges</span><span class="p">(</span><span class="n">G</span><span class="p">,</span><span class="n">pos</span><span class="p">,</span><span class="n">width</span><span class="o">=</span><span class="mf">1.5</span><span class="p">)</span>
 <span class="n">nx</span><span class="o">.</span><span class="n">draw_networkx_edge_labels</span><span class="p">(</span><span class="n">G</span><span class="p">,</span><span class="n">pos</span><span class="p">,</span><span class="n">edge_labels</span><span class="o">=</span><span class="n">weights</span><span class="p">,</span><span class="n">font_size</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span>
 
-<span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;off&#39;</span><span class="p">);</span>                             <span class="c1"># usuń ramkę</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;off&#39;</span><span class="p">)</span>                              <span class="c1"># usuń ramkę</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -471,7 +471,8 @@
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># podgraf grafu G, zawierający wierzchołki 1,2,3</span>
 <span class="n">nx</span><span class="o">.</span><span class="n">draw_networkx</span><span class="p">(</span><span class="n">nx</span><span class="o">.</span><span class="n">subgraph</span><span class="p">(</span><span class="n">G</span><span class="p">,[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">]),</span><span class="n">pos</span><span class="p">,</span><span class="n">labels</span><span class="p">,</span><span class="n">node_size</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span>
                  <span class="n">font_color</span><span class="o">=</span><span class="s1">&#39;white&#39;</span><span class="p">,</span><span class="n">font_weight</span><span class="o">=</span><span class="s1">&#39;bold&#39;</span><span class="p">,</span><span class="n">font_size</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;off&#39;</span><span class="p">);</span>                    
+<span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;off&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -486,7 +487,8 @@
 
 <span class="n">nx</span><span class="o">.</span><span class="n">draw_networkx</span><span class="p">(</span><span class="n">nx</span><span class="o">.</span><span class="n">complement</span><span class="p">(</span><span class="n">G</span><span class="p">),</span><span class="n">pos</span><span class="p">,</span><span class="n">labels</span><span class="p">,</span><span class="n">node_size</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span>
                  <span class="n">font_color</span><span class="o">=</span><span class="s1">&#39;white&#39;</span><span class="p">,</span><span class="n">font_weight</span><span class="o">=</span><span class="s1">&#39;bold&#39;</span><span class="p">,</span><span class="n">font_size</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;off&#39;</span><span class="p">);</span>                   
+<span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;off&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -502,7 +504,8 @@
 
 <span class="n">nx</span><span class="o">.</span><span class="n">draw_networkx</span><span class="p">(</span><span class="n">H</span><span class="p">,</span><span class="n">pos</span><span class="p">,</span><span class="n">labels</span><span class="p">,</span><span class="n">node_size</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span>
                  <span class="n">font_color</span><span class="o">=</span><span class="s1">&#39;white&#39;</span><span class="p">,</span><span class="n">font_weight</span><span class="o">=</span><span class="s1">&#39;bold&#39;</span><span class="p">,</span><span class="n">font_size</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;off&#39;</span><span class="p">);</span>                  
+<span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;off&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -513,7 +516,7 @@
 </div>
 <div class="section" id="mosty-krolewieckie">
 <h2>Mosty królewieckie<a class="headerlink" href="#mosty-krolewieckie" title="Stały odnośnik do tego nagłówka">¶</a></h2>
-<p>Utwórzmy graf mostów królewieckich z <strong>rys. [5.5]</strong>. Ponieważ występują tu krawędzie wielokrotne, stosujemy funkcję <strong>MultiGraph</strong>.</p>
+<p>A teraz najsłynniejszy problem. Utwórzmy graf mostów królewieckich z <strong>rys. [5.5]</strong>. Ponieważ występują tu krawędzie wielokrotne, stosujemy funkcję <strong>MultiGraph</strong>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">G</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">MultiGraph</span><span class="p">()</span>  <span class="c1"># multigraf dla przypadku wielokrotnych krawędzi </span>
@@ -534,7 +537,8 @@
 <span class="n">pos</span><span class="o">=</span><span class="n">nx</span><span class="o">.</span><span class="n">get_node_attributes</span><span class="p">(</span><span class="n">G</span><span class="p">,</span><span class="s1">&#39;pos&#39;</span><span class="p">)</span>
 <span class="n">nx</span><span class="o">.</span><span class="n">draw_networkx</span><span class="p">(</span><span class="n">G</span><span class="p">,</span><span class="n">pos</span><span class="p">,</span><span class="n">node_size</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span>
                  <span class="n">font_color</span><span class="o">=</span><span class="s1">&#39;white&#39;</span><span class="p">,</span><span class="n">font_weight</span><span class="o">=</span><span class="s1">&#39;bold&#39;</span><span class="p">,</span><span class="n">font_size</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;off&#39;</span><span class="p">);</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;off&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -544,10 +548,10 @@
 </div>
 <div class="note admonition">
 <p class="admonition-title">Krawędzie wielokrotne</p>
-<p>Powyżej niestety nie widać krawędzi wielokrotnych, które się nakładają, z czym <strong>networkx</strong> ma kłopoty!</p>
+<p>Powyżej niestety nie widać krawędzi wielokrotnych, które się nakładają na siebie, z czym funkcja <strong>draw-networkx</strong> ma kłopoty!</p>
 </div>
 <p>Rozwiązaniem jest rysowanie krawędzi wg przepisu 3 ze strony
-<a class="reference external" href="https://www.py4u.net/discuss/22430">https://www.py4u.net/discuss/22430</a> od użytkownika <a class="reference external" href="https://stackoverflow.com/users/1461850/atomh33ls">atomh33ls</a>. Aby go zrozumieć, zobaczmy najpierw, jak <strong>MultiGraph</strong> reprezentuje krawędzie:</p>
+<a class="reference external" href="https://www.py4u.net/discuss/22430">https://www.py4u.net/discuss/22430</a> od użytkownika <a class="reference external" href="https://stackoverflow.com/users/1461850/atomh33ls">atomh33ls</a>. Aby ten prosty przepis zrozumieć, zobaczmy najpierw, jak <strong>MultiGraph</strong> reprezentuje krawędzie:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">list</span><span class="p">(</span><span class="n">G</span><span class="o">.</span><span class="n">edges</span><span class="p">)</span>
@@ -566,7 +570,7 @@
 </div>
 </div>
 </div>
-<p>Każda krawędź jest krotką, np. («A», «B», 0). Widzimy, że w przypadku krawędzi wielokrotnych są one rozróżniane elementem numer 2 krotki, który w naszym konkretnym przypadku przyjmuje wartości 0 lub 1. W szczególności, mamy dwie krawędzie od A do B: («A», «B», 0) oraz («A», «B», 1). Idea poniższego przepisu jest taka, by krzywizna krawędzi zależała od jej numeru.</p>
+<p>Każda krawędź jest krotką, np. (A, B, 0). Widzimy, że w przypadku krawędzi wielokrotnych są one rozróżniane elementem numer 2 krotki, który w naszym konkretnym przypadku przyjmuje wartości 0 lub 1. W szczególności, mamy dwie krawędzie od A do B: (A, B, 0) oraz (A, B, 1). Idea poniższego przepisu jest taka, by krzywizna krawędzi zależała od jej numeru.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nx</span><span class="o">.</span><span class="n">draw_networkx_nodes</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">pos</span><span class="p">,</span> <span class="n">node_size</span> <span class="o">=</span> <span class="mi">100</span><span class="p">)</span> <span class="c1"># narysuj wierzchołki</span>
@@ -587,7 +591,8 @@
                         <span class="p">),</span>
             <span class="p">)</span>
     
-<span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;off&#39;</span><span class="p">);</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;off&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -650,7 +655,7 @@
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">list</span><span class="p">(</span><span class="n">nx</span><span class="o">.</span><span class="n">generate_adjlist</span><span class="p">(</span><span class="n">G</span><span class="p">))</span> <span class="c1"># listy incydencji (Uwaga! Inna konwencja niż w książce)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">list</span><span class="p">(</span><span class="n">nx</span><span class="o">.</span><span class="n">generate_adjlist</span><span class="p">(</span><span class="n">G</span><span class="p">))</span> <span class="c1"># listy incydencji </span>
 </pre></div>
 </div>
 </div>
@@ -659,6 +664,10 @@
 </pre></div>
 </div>
 </div>
+</div>
+<div class="note admonition">
+<p class="admonition-title">Uwaga!</p>
+<p>Widzimy, że w <strong>networkx</strong> przyjęta jest bardziej oszczędna konwencja dla list incydencji niż w książce (por. <strong>rozdz. [5.1]</strong>). Sąsiadujące wierzchołki podawane są tylko „w jedną stronę”, np. od A do B (pierwsza lista powyżej), ale wtedy nie są już podawane od B do A (druga lista), itp. Prowadzi to do bardziej zwięzłego zapisu.</p>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -672,7 +681,7 @@
 </div>
 </div>
 </div>
-<p>Można utworzyć graf z listy incydencji:</p>
+<p>Można też utworzyć graf w oparciu o listy incydencji:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">K</span><span class="o">=</span><span class="n">nx</span><span class="o">.</span><span class="n">MultiGraph</span><span class="p">()</span>
@@ -693,12 +702,18 @@
 </div>
 </div>
 </div>
+<div class="note admonition">
+<p class="admonition-title">Schematy rozłożenia wierzchołków</p>
+<p>W <strong>networkx</strong> możemy stosować rozmaite schematy rozłożenia wierzchołków. Dodatkowo, każdy schemat posiada element losowy, co prowadzi do innego rysunku przy kolejnych wywoływaniach funkcji rysującej graf.</p>
+</div>
+<p>Poniżej sprawdź różne schematy:</p>
+<p>nx.spring_layout(G), nx.kamada_kawai_layout(G), nx.random_layout(G), nx.shell_layout(G), nx.circular_layout(G), nx.spectral_layout(G)</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pos</span><span class="o">=</span><span class="n">nx</span><span class="o">.</span><span class="n">spring_layout</span><span class="p">(</span><span class="n">K</span><span class="p">)</span>   <span class="c1"># ustawienie pozycji wierzchołków w spring_layout</span>
 <span class="n">nx</span><span class="o">.</span><span class="n">draw_networkx_nodes</span><span class="p">(</span><span class="n">K</span><span class="p">,</span> <span class="n">pos</span><span class="p">,</span> <span class="n">node_size</span> <span class="o">=</span> <span class="mi">100</span><span class="p">)</span> <span class="c1"># narysuj wierzchołki</span>
 
-<span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">K</span><span class="o">.</span><span class="n">edges</span><span class="p">:</span>   <span class="c1"># pętla po krawędziach, jak w poprzednim prtzykładzie</span>
+<span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">K</span><span class="o">.</span><span class="n">edges</span><span class="p">:</span>   <span class="c1"># pętla po krawędziach, jak w poprzednim przykładzie</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">,</span>
             <span class="n">xy</span><span class="o">=</span><span class="n">pos</span><span class="p">[</span><span class="n">e</span><span class="p">[</span><span class="mi">0</span><span class="p">]],</span> <span class="n">xycoords</span><span class="o">=</span><span class="s1">&#39;data&#39;</span><span class="p">,</span>
             <span class="n">xytext</span><span class="o">=</span><span class="n">pos</span><span class="p">[</span><span class="n">e</span><span class="p">[</span><span class="mi">1</span><span class="p">]],</span> <span class="n">textcoords</span><span class="o">=</span><span class="s1">&#39;data&#39;</span><span class="p">,</span>
@@ -713,9 +728,6 @@
 <span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;off&#39;</span><span class="p">);</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<img alt="../_images/grafy_43_0.png" src="../_images/grafy_43_0.png" />
 </div>
 </div>
 <p>Ponieważ stopnie dokładnie dwóch wierzchołków są nieparzyste, zgodnie z wnioskami <strong>[5.1]</strong> i <strong>[5.2]</strong> graf <span class="math notranslate nohighlight">\(K\)</span> nie jest eulerowski, ale jest półeulerowski:</p>
@@ -763,7 +775,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[(3, 2), (2, 1), (1, 2), (2, 1), (1, 3), (3, 0), (0, 1), (1, 0), (0, 1)]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[(1, 0), (0, 1), (1, 0), (0, 3), (3, 1), (1, 2), (2, 1), (1, 2), (2, 3)]
 </pre></div>
 </div>
 </div>
@@ -776,12 +788,13 @@
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">K5</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">complete_graph</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span> <span class="c1"># graf pełny</span>
 <span class="n">nx</span><span class="o">.</span><span class="n">draw_circular</span><span class="p">(</span><span class="n">K5</span><span class="p">,</span><span class="n">node_size</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;equal&#39;</span><span class="p">);</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;equal&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/grafy_52_0.png" src="../_images/grafy_52_0.png" />
+<img alt="../_images/grafy_55_0.png" src="../_images/grafy_55_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -791,23 +804,25 @@
 <span class="c1"># położenia wierzchołków zadane z pomocą słownika</span>
 <span class="n">posi</span> <span class="o">=</span> <span class="p">{</span><span class="mi">0</span><span class="p">:[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">],</span> <span class="mi">1</span><span class="p">:[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">],</span> <span class="mi">2</span><span class="p">:[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">],</span> <span class="mi">3</span><span class="p">:[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="mi">4</span><span class="p">:[</span><span class="mi">0</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="mi">5</span><span class="p">:[</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">]}</span>
 <span class="n">nx</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">K33</span><span class="p">,</span><span class="n">posi</span><span class="p">,</span><span class="n">node_size</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/grafy_53_0.png" src="../_images/grafy_53_0.png" />
+<img alt="../_images/grafy_56_0.png" src="../_images/grafy_56_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">H</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">dodecahedral_graph</span><span class="p">()</span> <span class="c1"># graf platoński (12-ścian foremny)</span>
 <span class="n">nx</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">H</span><span class="p">,</span><span class="n">node_size</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;equal&#39;</span><span class="p">);</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;equal&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/grafy_54_0.png" src="../_images/grafy_54_0.png" />
+<img alt="../_images/grafy_57_0.png" src="../_images/grafy_57_0.png" />
 </div>
 </div>
 <p>Graf <span class="math notranslate nohighlight">\(H\)</span> jest regularny (stopień każdego wierzchołka jest taki sam i wynosi 3):</p>
@@ -824,8 +839,8 @@
 </div>
 </div>
 </div>
-<div class="section" id="badanie-grafu">
-<h2>Badanie grafu<a class="headerlink" href="#badanie-grafu" title="Stały odnośnik do tego nagłówka">¶</a></h2>
+<div class="section" id="badanie-grafow">
+<h2>Badanie grafów<a class="headerlink" href="#badanie-grafow" title="Stały odnośnik do tego nagłówka">¶</a></h2>
 <p>Poniższa funkcja podaje podstawowe informacje o grafie:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -853,7 +868,9 @@
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">G</span><span class="o">=</span><span class="n">nx</span><span class="o">.</span><span class="n">Graph</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># sprawdź po kolei wszystkie możliwości</span>
+
+<span class="n">G</span><span class="o">=</span><span class="n">nx</span><span class="o">.</span><span class="n">Graph</span><span class="p">()</span>
 <span class="c1"># G=nx.MultiGraph()</span>
 <span class="c1"># G=nx.DiGraph()</span>
 <span class="c1"># G=nx.MultiDiGraph()</span>
@@ -906,22 +923,6 @@ Stopnie całkowite wierzchołków:  {1: 3, 2: 3, 6: 5, 4: 3, 5: 2, 3: 4}
 </div>
 </div>
 </div>
-<div class="note admonition">
-<p class="admonition-title">Schematy rozłożenia wierzchołków</p>
-<p>Możemy wybrać różne schematy rozłożenia wierzchołków (sprawdź po kolei poszczególne możliwości).</p>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nodePos</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">spring_layout</span><span class="p">(</span><span class="n">G</span><span class="p">)</span>
-<span class="c1"># nodePos = nx.kamada_kawai_layout(G)</span>
-<span class="c1"># nodePos = nx.random_layout(G)</span>
-<span class="c1"># nodePos = nx.shell_layout(G)</span>
-<span class="c1"># nodePos = nx.circular_layout(G)</span>
-<span class="c1"># nodePos = nx.spectral_layout(G)</span>
-</pre></div>
-</div>
-</div>
-</div>
 <p>Jesteśmy gotowi narysować nasz graf!</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -933,12 +934,13 @@ Stopnie całkowite wierzchołków:  {1: 3, 2: 3, 6: 5, 4: 3, 5: 2, 3: 4}
 <span class="k">if</span> <span class="s1">&#39;Multi&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="nb">str</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">G</span><span class="p">)):</span>
     <span class="n">nx</span><span class="o">.</span><span class="n">draw_networkx_edge_labels</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">pos</span><span class="o">=</span><span class="n">nodePos</span><span class="p">,</span> <span class="n">edge_labels</span><span class="o">=</span><span class="n">label_weight</span><span class="p">,</span><span class="n">font_size</span><span class="o">=</span><span class="mi">8</span><span class="p">);</span>
 
-<span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;off&#39;</span><span class="p">);</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;off&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/grafy_67_0.png" src="../_images/grafy_67_0.png" />
+<img alt="../_images/grafy_68_0.png" src="../_images/grafy_68_0.png" />
 </div>
 </div>
 <p>Możemy badać wiele innych cech grafu, np.</p>
@@ -951,18 +953,6 @@ Stopnie całkowite wierzchołków:  {1: 3, 2: 3, 6: 5, 4: 3, 5: 2, 3: 4}
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Lista wierzchołków osiągalnych z 1 w pojedynczym kroku: [2, 6, 3]
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">list</span><span class="p">(</span><span class="n">nx</span><span class="o">.</span><span class="n">find_cliques</span><span class="p">(</span><span class="n">G</span><span class="p">))</span> <span class="c1"># kliki</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[3, 1, 2], [3, 1, 6], [3, 4, 2], [5, 4], [5, 6]]
 </pre></div>
 </div>
 </div>
@@ -984,7 +974,7 @@ Stopnie całkowite wierzchołków:  {1: 3, 2: 3, 6: 5, 4: 3, 5: 2, 3: 4}
 <h2>Algorytmy na grafach<a class="headerlink" href="#algorytmy-na-grafach" title="Stały odnośnik do tego nagłówka">¶</a></h2>
 <div class="section" id="przeszukiwanie-wszerz">
 <h3>Przeszukiwanie wszerz<a class="headerlink" href="#przeszukiwanie-wszerz" title="Stały odnośnik do tego nagłówka">¶</a></h3>
-<p>Poniżej autorski algorytm <strong>[5.3]</strong> przeszukiwania grafu wszerz. Algorytm sprawdza też, czy graf jest spójny i w tym przypadku zwraca drzewo spinające grafu. Jeśli graf nie jest spójny, zwracane jest drzewo spinające części spójnej zawierającej wierzchołek startowy.</p>
+<p>W <strong>rozdz. [5.7]</strong> i <strong>[5.8]</strong> omówiono niektóre podstawowe algorytmy stosowane w analizie grafów. Poniżej podajemy „autorski” program dla algorytmu <strong>[5.3]</strong> przeszukiwania grafu wszerz. Algorytm sprawdza też „przy okazji”, czy graf jest spójny i w tym przypadku zwraca drzewo spinające grafu. Jeśli graf nie jest spójny, zwracane jest drzewo spinające części spójnej zawierającej wierzchołek startowy przeszukiwania.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">wszerz</span><span class="p">(</span><span class="n">GG</span><span class="p">,</span><span class="n">deb</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
@@ -992,12 +982,12 @@ Stopnie całkowite wierzchołków:  {1: 3, 2: 3, 6: 5, 4: 3, 5: 2, 3: 4}
 <span class="sd">    przesukiwanie wszerz</span>
 <span class="sd">    </span>
 <span class="sd">    input: </span>
-<span class="sd">      GG  - graf w formacie networkx </span>
+<span class="sd">      GG  - graf w formacie Graph </span>
 <span class="sd">      deb - boolean, kontrola wydruku </span>
 <span class="sd">           </span>
 <span class="sd">    output: </span>
-<span class="sd">      GG spójny - drzewo spinające </span>
-<span class="sd">      GG niespójny - drzewo spinające części spójnej zawierającej wierzchołek startowy</span>
+<span class="sd">      jeśli GG spójny - drzewo spinające </span>
+<span class="sd">      jeśli GG niespójny - drzewo spinające części spójnej zawierającej wierzchołek startowy</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="n">G</span><span class="o">=</span><span class="n">GG</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>         <span class="c1"># kopia grafu (będzie &quot;psuta&quot;)    </span>
@@ -1078,9 +1068,6 @@ Stopnie całkowite wierzchołków:  {1: 3, 2: 3, 6: 5, 4: 3, 5: 2, 3: 4}
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<img alt="../_images/grafy_78_0.png" src="../_images/grafy_78_0.png" />
-</div>
 </div>
 <p>Widzimy uzyskane drzewo spinające, oznaczone na czerowno, dla składowej spójnej grafu zawierajacej wierzchołek startowy 0.</p>
 <p>Możemy teraz łatwo utworzyć funcję sprawdzającą ile spójnych składowych ma graf.</p>
@@ -1117,7 +1104,7 @@ Stopnie całkowite wierzchołków:  {1: 3, 2: 3, 6: 5, 4: 3, 5: 2, 3: 4}
 </div>
 </div>
 </div>
-<p>Podobnie, możemy uzyskać las drzew spinających, sumując drzewa spinające poszczególnych składowych spójnych grafu:</p>
+<p>Podobnie, możemy uzyskać <strong>las drzew spinających</strong>, sumując drzewa spinające poszczególnych składowych spójnych grafu:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">las</span><span class="p">(</span><span class="n">GG</span><span class="p">):</span>
@@ -1168,16 +1155,13 @@ Stopnie całkowite wierzchołków:  {0: 3, 1: 2, 5: 3, 9: 2, 3: 3, 8: 2, &#39;A&
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<img alt="../_images/grafy_85_0.png" src="../_images/grafy_85_0.png" />
-</div>
 </div>
 </div>
 <div class="section" id="algorytmy-wbudowane-w-networkx">
 <h3>Algorytmy wbudowane w networkx<a class="headerlink" href="#algorytmy-wbudowane-w-networkx" title="Stały odnośnik do tego nagłówka">¶</a></h3>
 <div class="note admonition">
 <p class="admonition-title">Algorytmy <strong>networkx</strong></p>
-<p>Biblioteka <strong>networkx</strong> zawiera wiele standardowych algorytmów działających na grafach. Są one „profesjonalne” i należy ich używać, gdy tylko możliwe. Powyższy algorytm „autorski” miał na celu pokazanie, że algorytmy na grafach i implementujące je programy są w istocie proste i łatwo je zrozumieć.</p>
+<p>Biblioteka <strong>networkx</strong> zawiera wiele bardzo użytecznych algorytmów działających na grafach. Są one „profesjonalne” i należy ich używać, gdy tylko możliwe. Powyższy algorytm „autorski” miał na celu pokazanie, że algorytmy na grafach i implementujące je programy są w swojej istocie proste i łatwe w zrozumieniu.</p>
 </div>
 <p>Utwórzmy przykładowy graf skierowany i przeszukajmy go w głąb i wszerz:</p>
 <div class="cell docutils container">
@@ -1201,6 +1185,8 @@ Stopnie całkowite wierzchołków:  {0: 3, 1: 2, 5: 3, 9: 2, 3: 3, 8: 2, &#39;A&
 
 <span class="n">nx</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">with_labels</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">pos</span><span class="o">=</span><span class="n">nodePos</span><span class="p">,</span> <span class="n">font_color</span><span class="o">=</span><span class="s1">&#39;white&#39;</span><span class="p">,</span> <span class="n">font_weight</span><span class="o">=</span><span class="s1">&#39;bold&#39;</span><span class="p">,</span>
        <span class="n">node_size</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span><span class="n">font_size</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -1212,8 +1198,10 @@ Stopnie całkowite wierzchołków:  {0: 3, 1: 2, 5: 3, 9: 2, 3: 3, 8: 2, &#39;A&
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># przeszukiwanie w głąb</span>
 <span class="n">T</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">depth_first_search</span><span class="o">.</span><span class="n">dfs_tree</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+
 <span class="n">nx</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">with_labels</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">pos</span><span class="o">=</span><span class="n">nodePos</span><span class="p">,</span><span class="n">node_size</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span><span class="n">font_color</span><span class="o">=</span><span class="s1">&#39;white&#39;</span><span class="p">,</span><span class="n">font_size</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span>
-<span class="n">nx</span><span class="o">.</span><span class="n">draw_networkx_edges</span><span class="p">(</span><span class="n">T</span><span class="p">,</span> <span class="n">pos</span><span class="o">=</span><span class="n">nodePos</span><span class="p">,</span><span class="n">edge_color</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">);</span>
+<span class="n">nx</span><span class="o">.</span><span class="n">draw_networkx_edges</span><span class="p">(</span><span class="n">T</span><span class="p">,</span> <span class="n">pos</span><span class="o">=</span><span class="n">nodePos</span><span class="p">,</span><span class="n">edge_color</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -1225,8 +1213,10 @@ Stopnie całkowite wierzchołków:  {0: 3, 1: 2, 5: 3, 9: 2, 3: 3, 8: 2, &#39;A&
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># przeszukiwanie wszerz</span>
 <span class="n">T</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">breadth_first_search</span><span class="o">.</span><span class="n">bfs_tree</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+
 <span class="n">nx</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">with_labels</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">pos</span><span class="o">=</span><span class="n">nodePos</span><span class="p">,</span><span class="n">node_size</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span><span class="n">font_color</span><span class="o">=</span><span class="s1">&#39;white&#39;</span><span class="p">,</span><span class="n">font_size</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span>
-<span class="n">nx</span><span class="o">.</span><span class="n">draw_networkx_edges</span><span class="p">(</span><span class="n">T</span><span class="p">,</span> <span class="n">pos</span><span class="o">=</span><span class="n">nodePos</span><span class="p">,</span><span class="n">edge_color</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">);</span>
+<span class="n">nx</span><span class="o">.</span><span class="n">draw_networkx_edges</span><span class="p">(</span><span class="n">T</span><span class="p">,</span> <span class="n">pos</span><span class="o">=</span><span class="n">nodePos</span><span class="p">,</span><span class="n">edge_color</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -1235,7 +1225,7 @@ Stopnie całkowite wierzchołków:  {0: 3, 1: 2, 5: 3, 9: 2, 3: 3, 8: 2, &#39;A&
 </div>
 </div>
 <p>Możemy łatwo sprawdzić na powyższych rysunkach realizację <strong>alg. [5.2]</strong> i <strong>[5.3]</strong>.</p>
-<p>Kolejne algorytmy dotyczą grafów z wagami, <strong>rozdz. [5.8]</strong>. Tworzymy zatem przykładowy graf z wagami i znajdujemy najkrótszą ścieżkę między dwoa wierzchołkami:</p>
+<p>Kolejne algorytmy dotyczą grafów z wagami, <strong>rozdz. [5.8]</strong>. Tworzymy zatem przykładowy graf z wagami i znajdujemy najkrótszą ścieżkę między dwoma wierzchołkami:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">G</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">Graph</span><span class="p">()</span>
@@ -1258,7 +1248,8 @@ Stopnie całkowite wierzchołków:  {0: 3, 1: 2, 5: 3, 9: 2, 3: 3, 8: 2, &#39;A&
 <span class="n">nx</span><span class="o">.</span><span class="n">draw_networkx</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">pos</span><span class="o">=</span><span class="n">nodePos</span><span class="p">,</span> <span class="n">with_labels</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> 
                  <span class="n">node_size</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span><span class="n">font_color</span><span class="o">=</span><span class="s1">&#39;white&#39;</span><span class="p">,</span><span class="n">font_size</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span><span class="n">font_weight</span><span class="o">=</span><span class="s1">&#39;bold&#39;</span><span class="p">)</span>
 <span class="n">nx</span><span class="o">.</span><span class="n">draw_networkx_edge_labels</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">pos</span><span class="o">=</span><span class="n">nodePos</span><span class="p">,</span> <span class="n">edge_labels</span><span class="o">=</span><span class="n">label_weight</span><span class="p">,</span><span class="n">font_size</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s2">&quot;off&quot;</span><span class="p">);</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s2">&quot;off&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -1296,7 +1287,7 @@ Stopnie całkowite wierzchołków:  {0: 3, 1: 2, 5: 3, 9: 2, 3: 3, 8: 2, &#39;A&
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># najkrótszą ścieżkę oznaczymy na czerwono</span>
-<span class="n">red_edges</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">P</span><span class="p">,</span><span class="n">P</span><span class="p">[</span><span class="mi">1</span><span class="p">:]))</span> <span class="c1"># zip stwarza odpowiednią krotkę</span>
+<span class="n">red_edges</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">P</span><span class="p">,</span><span class="n">P</span><span class="p">[</span><span class="mi">1</span><span class="p">:]))</span> <span class="c1"># zip stwarza odpowiednią krotkę z listy P</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">red_edges</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -1309,7 +1300,7 @@ Stopnie całkowite wierzchołków:  {0: 3, 1: 2, 5: 3, 9: 2, 3: 3, 8: 2, &#39;A&
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sh</span><span class="o">=</span><span class="n">nx</span><span class="o">.</span><span class="n">Graph</span><span class="p">()</span>         <span class="c1"># graf dla najkrótsza ścieżka</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sh</span><span class="o">=</span><span class="n">nx</span><span class="o">.</span><span class="n">Graph</span><span class="p">()</span>         <span class="c1"># graf dla najkrótszej ścieżki</span>
 <span class="n">sh</span><span class="o">.</span><span class="n">add_nodes_from</span><span class="p">(</span><span class="n">P</span><span class="p">)</span>
 <span class="n">sh</span><span class="o">.</span><span class="n">add_edges_from</span><span class="p">(</span><span class="n">red_edges</span><span class="p">)</span>
 <span class="n">nx</span><span class="o">.</span><span class="n">draw_networkx</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">pos</span><span class="o">=</span><span class="n">nodePos</span><span class="p">,</span> <span class="n">with_labels</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
@@ -1318,7 +1309,8 @@ Stopnie całkowite wierzchołków:  {0: 3, 1: 2, 5: 3, 9: 2, 3: 3, 8: 2, &#39;A&
 <span class="n">nx</span><span class="o">.</span><span class="n">draw_networkx</span><span class="p">(</span><span class="n">sh</span><span class="p">,</span> <span class="n">pos</span><span class="o">=</span><span class="n">nodePos</span><span class="p">,</span><span class="n">node_color</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">,</span>
                 <span class="n">node_size</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span><span class="n">font_color</span><span class="o">=</span><span class="s1">&#39;white&#39;</span><span class="p">,</span><span class="n">font_size</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span><span class="n">font_weight</span><span class="o">=</span><span class="s1">&#39;bold&#39;</span><span class="p">)</span>
 <span class="n">nx</span><span class="o">.</span><span class="n">draw_networkx_edges</span><span class="p">(</span><span class="n">sh</span><span class="p">,</span> <span class="n">pos</span><span class="o">=</span><span class="n">nodePos</span><span class="p">,</span> <span class="n">edge_color</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">,</span><span class="n">width</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s2">&quot;off&quot;</span><span class="p">);</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s2">&quot;off&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -1327,7 +1319,10 @@ Stopnie całkowite wierzchołków:  {0: 3, 1: 2, 5: 3, 9: 2, 3: 3, 8: 2, &#39;A&
 </div>
 </div>
 <p>Grafy napotykane w „codziennym życiu” są na ogół bardzo duże (zob. wstęp  <strong>rozdz. [5]</strong>). Poniżej przykład działania algorytmu znajdowania najkrótszej ścieżki dla dużego geometrycznego grafu losowego.</p>
-<p>W konstrukcji geometrycznego grafu losowego umieszcza się jednorodnie losowo <span class="math notranslate nohighlight">\(n\)</span> wierzchołków w kwadracie <span class="math notranslate nohighlight">\([0,1]\times[0,1]\)</span>. Dwa wierzchołki są łączone krawędzią, jeśli ich odległość jest mniejsza niż pewna zadana odległość <span class="math notranslate nohighlight">\(d\)</span></p>
+<div class="note admonition">
+<p class="admonition-title">Geometryczny graf losowy</p>
+<p>W konstrukcji geometrycznego grafu losowego umieszcza się jednorodnie losowo <span class="math notranslate nohighlight">\(n\)</span> wierzchołków w kwadracie <span class="math notranslate nohighlight">\([0,1]\times[0,1]\)</span>. Dwa wierzchołki są łączone krawędzią, jeśli ich odległość jest mniejsza niż pewna zadana odległość <span class="math notranslate nohighlight">\(d\)</span>.</p>
+</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># geometryczny graf losowy, n=200, d=0.15</span>
@@ -1336,18 +1331,19 @@ Stopnie całkowite wierzchołków:  {0: 3, 1: 2, 5: 3, 9: 2, 3: 3, 8: 2, &#39;A&
 
 <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>
 <span class="n">nx</span><span class="o">.</span><span class="n">draw_networkx</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">pos</span><span class="o">=</span><span class="n">pos</span><span class="p">,</span> <span class="n">with_labels</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span><span class="n">node_size</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;off&#39;</span><span class="p">);</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;off&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/grafy_100_0.png" src="../_images/grafy_100_0.png" />
+<img alt="../_images/grafy_101_0.png" src="../_images/grafy_101_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># najkrótsza ścieżka między wierzchołkami 1 i 50</span>
-<span class="n">P</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">shortest_path</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">80</span><span class="p">)</span>
+<span class="n">P</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">shortest_path</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">190</span><span class="p">)</span>
 
 <span class="n">red_edges</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">P</span><span class="p">,</span><span class="n">P</span><span class="p">[</span><span class="mi">1</span><span class="p">:]))</span>
 
@@ -1359,12 +1355,13 @@ Stopnie całkowite wierzchołków:  {0: 3, 1: 2, 5: 3, 9: 2, 3: 3, 8: 2, &#39;A&
 <span class="n">nx</span><span class="o">.</span><span class="n">draw_networkx</span><span class="p">(</span><span class="n">sh</span><span class="p">,</span> <span class="n">pos</span><span class="o">=</span><span class="n">pos</span><span class="p">,</span><span class="n">node_color</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">,</span><span class="n">node_size</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span><span class="n">with_labels</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 <span class="n">nx</span><span class="o">.</span><span class="n">draw_networkx_edges</span><span class="p">(</span><span class="n">sh</span><span class="p">,</span> <span class="n">pos</span><span class="o">=</span><span class="n">pos</span><span class="p">,</span> <span class="n">edge_color</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">,</span><span class="n">width</span><span class="o">=</span><span class="mf">1.5</span><span class="p">)</span>
 
-<span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;off&#39;</span><span class="p">);</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;off&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/grafy_101_0.png" src="../_images/grafy_101_0.png" />
+<img alt="../_images/grafy_102_0.png" src="../_images/grafy_102_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1390,12 +1387,13 @@ Stopnie całkowite wierzchołków:  {0: 3, 1: 2, 5: 3, 9: 2, 3: 3, 8: 2, &#39;A&
 <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>
 <span class="c1">#nx.draw_networkx(G, pos=pos, with_labels=False, node_size=30)</span>
 <span class="n">nx</span><span class="o">.</span><span class="n">draw_networkx</span><span class="p">(</span><span class="n">T</span><span class="p">,</span> <span class="n">pos</span><span class="o">=</span><span class="n">pos</span><span class="p">,</span> <span class="n">with_labels</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">node_size</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">edge_color</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;off&#39;</span><span class="p">);</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;off&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/grafy_103_0.png" src="../_images/grafy_103_0.png" />
+<img alt="../_images/grafy_104_0.png" src="../_images/grafy_104_0.png" />
 </div>
 </div>
 <div class="note admonition">
@@ -1405,19 +1403,21 @@ Stopnie całkowite wierzchołków:  {0: 3, 1: 2, 5: 3, 9: 2, 3: 3, 8: 2, &#39;A&
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># średnica grafu (działa tylko dla grafu spójnego)</span>
-<span class="n">nx</span><span class="o">.</span><span class="n">diameter</span><span class="p">(</span><span class="n">G</span><span class="p">)</span>
+<span class="k">if</span> <span class="n">ile_skl</span><span class="p">(</span><span class="n">G</span><span class="p">)</span><span class="o">==</span><span class="mi">1</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;średnica grafu:&quot;</span><span class="p">,</span> <span class="n">nx</span><span class="o">.</span><span class="n">diameter</span><span class="p">(</span><span class="n">G</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>11
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>liczba składowych spójnych: 1
+średnica grafu: 12
 </pre></div>
 </div>
 </div>
 </div>
 <div class="note admonition">
 <p class="admonition-title">Klika</p>
-<p>Klika to podgraf pełny - kazdy zna każdego!</p>
+<p>Klika to podgraf pełny - każdy zna każdego!</p>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1428,7 +1428,7 @@ Stopnie całkowite wierzchołków:  {0: 3, 1: 2, 5: 3, 9: 2, 3: 3, 8: 2, &#39;A&
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>12
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>11
 </pre></div>
 </div>
 </div>
@@ -1438,13 +1438,14 @@ Stopnie całkowite wierzchołków:  {0: 3, 1: 2, 5: 3, 9: 2, 3: 3, 8: 2, &#39;A&
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>
 <span class="n">nx</span><span class="o">.</span><span class="n">draw_networkx</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">pos</span><span class="p">,</span> <span class="n">with_labels</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">node_size</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span>
 <span class="n">nx</span><span class="o">.</span><span class="n">draw_networkx</span><span class="p">(</span><span class="n">G</span><span class="o">.</span><span class="n">subgraph</span><span class="p">(</span><span class="n">kli</span><span class="p">),</span>  <span class="n">pos</span><span class="p">,</span> <span class="n">with_labels</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">node_size</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> 
-                 <span class="n">edge_color</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">,</span><span class="n">width</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s2">&quot;off&quot;</span><span class="p">);</span>
+                 <span class="n">edge_color</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">,</span><span class="n">width</span><span class="o">=</span><span class="mf">1.5</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s2">&quot;off&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/grafy_108_0.png" src="../_images/grafy_108_0.png" />
+<img alt="../_images/grafy_109_0.png" src="../_images/grafy_109_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1453,22 +1454,29 @@ Stopnie całkowite wierzchołków:  {0: 3, 1: 2, 5: 3, 9: 2, 3: 3, 8: 2, &#39;A&
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;stopień wierzchołka&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;liczba wierzchołków&#39;</span><span class="p">)</span>
 
-<span class="n">plt</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">kG</span><span class="p">)),</span> <span class="n">kG</span><span class="p">);</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">kG</span><span class="p">)),</span> <span class="n">kG</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/grafy_109_0.png" src="../_images/grafy_109_0.png" />
+<img alt="../_images/grafy_110_0.png" src="../_images/grafy_110_0.png" />
 </div>
 </div>
 </div>
 </div>
 <div class="section" id="grafy-z-zewnetrznych-danych">
 <h2>Grafy z zewnętrznych danych<a class="headerlink" href="#grafy-z-zewnetrznych-danych" title="Stały odnośnik do tego nagłówka">¶</a></h2>
-<p>Częstokroć pragniemy zanalizowac dane z pomocą grafów. Dane są zebrane w plikach, więc pierwszym zadaniam jest wczytanie je w odpowiedni format grafu. Poniżej przedstawiamy dwa popularne przykłady.</p>
+<p>Częstokroć pragniemy zanalizowac dane z pomocą grafów. Dane są zebrane w plikach, więc pierwszym zadaniem jest wczytać i przekształcić je w odpowiedni format grafu. Poniżej przedstawiamy dwa popularne przykłady.</p>
 <div class="section" id="sioux-falls">
 <h3>Sioux Falls<a class="headerlink" href="#sioux-falls" title="Stały odnośnik do tego nagłówka">¶</a></h3>
-<p>Ten przykład zaczerpniety jest ze strony <a class="reference external" href="https://github.com/bstabler/TransportationNetworks/tree/master/SiouxFalls">https://github.com/bstabler/TransportationNetworks/tree/master/SiouxFalls</a> i dotyczy optymalizacji transportu w amerykańskim mieście Sioux Falls. Plik z danymi dot. położenia wierzchołków (skrzyżowań ulic) ma format</p>
+<p>Ten przykład zaczerpniety jest ze strony <a class="reference external" href="https://github.com/bstabler/TransportationNetworks/tree/master/SiouxFalls">https://github.com/bstabler/TransportationNetworks/tree/master/SiouxFalls</a> i dotyczy analizy transportu w amerykańskim mieście Sioux Falls. Plik z danymi dot. położenia wierzchołków (skrzyżowań ulic) ma format</p>
+<p>Node  X	      Y	    ;</p>
+<p>1	50000	510000	;</p>
+<p>2	320000	510000	;</p>
+<p>3	50000	440000	;</p>
+<p>4	130000	440000	;</p>
+<p>…. ,</p>
 <p>gdzie <span class="math notranslate nohighlight">\(X\)</span> i <span class="math notranslate nohighlight">\(Y\)</span> są geograficznymi współrzędnymi. Wczytanie wierzchołków odbywa się nastepująco:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1479,7 +1487,7 @@ Stopnie całkowite wierzchołków:  {0: 3, 1: 2, 5: 3, 9: 2, 3: 3, 8: 2, &#39;A&
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;SiouxFalls_node.tntp&quot;</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;SiouxFalls/SiouxFalls_node.tntp&quot;</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span>
 <span class="n">line</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">readline</span><span class="p">()</span>           <span class="c1"># opuść pierwszą linię</span>
 <span class="n">line</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">readline</span><span class="p">()</span>
 <span class="k">while</span> <span class="nb">len</span><span class="p">(</span><span class="n">line</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">:</span>            <span class="c1"># jeśli linia nie jest pusta</span>
@@ -1503,10 +1511,16 @@ Stopnie całkowite wierzchołków:  {0: 3, 1: 2, 5: 3, 9: 2, 3: 3, 8: 2, &#39;A&
 </div>
 </div>
 <p>Format pliku z krawędziami ma postać</p>
+<p>From To Volume Capacity 	Cost</p>
+<p>1 	2 	4494.6576464564205 	6.0008162373543197</p>
+<p>1 	3 	8119.079948047809 	4.0086907502079407</p>
+<p>2 	1 	4519.079948047809 	6.0008341229953821</p>
+<p>2 	6 	5967.3363961713767 	6.5735982553868011</p>
+<p>… ,</p>
 <p>gdzie pierwsze dwie kolumny podają wskaźniki wierzchołków, trzecia (Volume Capacity) to przepustowość komunikacyjna (w setkach samochodów na dobę) - tej wielkości nie używamy, a czwarta to koszt przejazdu.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;SiouxFalls_flow.tntp&quot;</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;SiouxFalls/SiouxFalls_flow.tntp&quot;</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span>
 <span class="n">line</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">readline</span><span class="p">()</span>
 <span class="n">line</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">readline</span><span class="p">()</span>
 <span class="k">while</span> <span class="nb">len</span><span class="p">(</span><span class="n">line</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">:</span>
@@ -1542,17 +1556,18 @@ Stopnie całkowite wierzchołków:  {0: 3, 1: 2, 5: 3, 9: 2, 3: 3, 8: 2, &#39;A&
             <span class="c1"># czerwony kolor dla krawędzi na najkrótszej ścieżce, czarny poza</span>
 
 <span class="c1"># rysunek, jak w uprzednich przypadkach </span>
-<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mi">6</span><span class="p">))</span> 
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mf">3.5</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span> 
 <span class="n">nx</span><span class="o">.</span><span class="n">draw_networkx</span><span class="p">(</span><span class="n">S</span><span class="p">,</span> <span class="n">node_pos</span><span class="p">,</span><span class="n">node_color</span><span class="o">=</span> <span class="n">node_col</span><span class="p">,</span> 
                  <span class="n">node_size</span><span class="o">=</span><span class="mi">80</span><span class="p">,</span><span class="n">font_size</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span><span class="n">font_color</span><span class="o">=</span><span class="s2">&quot;white&quot;</span><span class="p">,</span><span class="n">font_weight</span><span class="o">=</span><span class="s1">&#39;bold&#39;</span><span class="p">)</span>
 <span class="n">nx</span><span class="o">.</span><span class="n">draw_networkx_edges</span><span class="p">(</span><span class="n">S</span><span class="p">,</span> <span class="n">node_pos</span><span class="p">,</span><span class="n">edge_color</span><span class="o">=</span> <span class="n">edge_col</span><span class="p">)</span>
 <span class="n">nx</span><span class="o">.</span><span class="n">draw_networkx_edge_labels</span><span class="p">(</span><span class="n">S</span><span class="p">,</span> <span class="n">node_pos</span><span class="p">,</span> <span class="n">edge_labels</span><span class="o">=</span><span class="n">arc_weight</span><span class="p">,</span><span class="n">font_size</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;off&#39;</span><span class="p">);</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;off&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/grafy_123_0.png" src="../_images/grafy_123_0.png" />
+<img alt="../_images/grafy_124_0.png" src="../_images/grafy_124_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1584,7 +1599,13 @@ Stopnie całkowite wierzchołków:  {0: 3, 1: 2, 5: 3, 9: 2, 3: 3, 8: 2, &#39;A&
 </div>
 <div class="section" id="sieci-spoleczne">
 <h3>Sieci społeczne<a class="headerlink" href="#sieci-spoleczne" title="Stały odnośnik do tego nagłówka">¶</a></h3>
-<p>Drugi przykład pochodzi ze strony <a class="reference external" href="https://www.datacamp.com/community/tutorials/social-network-analysis-python">https://www.datacamp.com/community/tutorials/social-network-analysis-python</a> i dotyczy sieci społaeczne <strong>facebook</strong>. Wierzchołkami są osoby, które są połączone krawędzią jeśli są znajomymi. Plik z danymi ma bardzo prosty format, gdzie każda linia to para znajmych:</p>
+<p>Drugi przykład pochodzi ze strony <a class="reference external" href="https://www.datacamp.com/community/tutorials/social-network-analysis-python">https://www.datacamp.com/community/tutorials/social-network-analysis-python</a> i dotyczy sieci społecznej <strong>facebook</strong>. Wierzchołkami są osoby, które są połączone krawędzią jeśli są znajomymi. Plik z danymi ma bardzo prosty format, gdzie każda linia to para znajmych:</p>
+<p>…</p>
+<p>16 329</p>
+<p>16 331</p>
+<p>16 332</p>
+<p>17 19</p>
+<p>…</p>
 <p>Osoba 16 zna osobe 329 itd. W tym przypadku możemy bardzo łatwo utworzyć graf poprzez instrukcję</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1601,40 +1622,37 @@ Stopnie całkowite wierzchołków:  {0: 3, 1: 2, 5: 3, 9: 2, 3: 3, 8: 2, &#39;A&
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Name: 
-Type: Graph
-Number of nodes: 4039
-Number of edges: 88234
-Average degree:  43.6910
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Graph with 4039 nodes and 88234 edges
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pos</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">spring_layout</span><span class="p">(</span><span class="n">G_fb</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span><span class="mi">6</span><span class="p">))</span>
-<span class="n">nx</span><span class="o">.</span><span class="n">draw_networkx</span><span class="p">(</span><span class="n">G_fb</span><span class="p">,</span> <span class="n">pos</span><span class="o">=</span><span class="n">pos</span><span class="p">,</span> <span class="n">with_labels</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span><span class="n">node_size</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">width</span><span class="o">=</span><span class="mf">0.15</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;off&#39;</span><span class="p">);</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
+<span class="n">nx</span><span class="o">.</span><span class="n">draw_networkx</span><span class="p">(</span><span class="n">G_fb</span><span class="p">,</span> <span class="n">with_labels</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span><span class="n">node_size</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">width</span><span class="o">=</span><span class="mf">0.15</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;off&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/grafy_132_0.png" src="../_images/grafy_132_0.png" />
+<img alt="../_images/grafy_133_0.png" src="../_images/grafy_133_0.png" />
 </div>
 </div>
-<p>Zwróćmy uwagę na kilka wierzchołków o stosunkowo bardzo wysokim stopniu:</p>
+<p>Zwróćmy uwagę na kilka wierzchołków o stosunkowo bardzo wysokim stopniu. W teorii sieci społecznych takie wierzchołki nazywamy „gwaizdowami” (stars).</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Gh</span><span class="o">=</span><span class="n">nx</span><span class="o">.</span><span class="n">degree_histogram</span><span class="p">(</span><span class="n">G_fb</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;stopień wierzchołka&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;liczba wierzchołków&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">Gh</span><span class="p">)),</span> <span class="n">Gh</span><span class="p">,</span><span class="n">log</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">10</span><span class="p">);</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">Gh</span><span class="p">)),</span> <span class="n">Gh</span><span class="p">,</span><span class="n">log</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/grafy_134_0.png" src="../_images/grafy_134_0.png" />
+<img alt="../_images/grafy_135_0.png" src="../_images/grafy_135_0.png" />
 </div>
 </div>
 </div>
@@ -1653,15 +1671,8 @@ Average degree:  43.6910
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{0: 0, 1: 3, 2: 0, 3: 1, 4: 2, 5: 1, 6: 2, 7: 1, 8: 0, 9: 3, 10: 2, 11: 3, 12: 2, 13: 1, 14: 0, 15: 3, 16: 0, 17: 1, 18: 2, 19: 3}
-
-[0, 3, 0, 1, 2, 1, 2, 1, 0, 3, 2, 3, 2, 1, 0, 3, 0, 1, 2, 3]
-</pre></div>
 </div>
-</div>
-</div>
-<p>Wynikiem algorytmu jest słownik kolorów, numerowanych 0, 1, 2, …, który skonwertowaliśmy na listę. Możemy wskaźnikom 0, 1, 2, … przydzielić konkretne kolory:</p>
+<p>Wynikiem algorytmu jest słownik kolorów, numerowanych 0, 1, 2, …, który skonwertowaliśmy na listę. Wskaźnikom 0, 1, 2, … przydzielamy ulubione kolory:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">colors</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;red&#39;</span><span class="p">,</span><span class="s1">&#39;blue&#39;</span><span class="p">,</span><span class="s1">&#39;green&#39;</span><span class="p">,</span><span class="s1">&#39;black&#39;</span><span class="p">,</span><span class="s1">&#39;gray&#39;</span><span class="p">,</span><span class="s1">&#39;brown&#39;</span><span class="p">,</span><span class="s1">&#39;pink&#39;</span><span class="p">,</span><span class="s1">&#39;yellow&#39;</span><span class="p">,</span><span class="s1">&#39;orange&#39;</span><span class="p">,</span><span class="s1">&#39;magenta&#39;</span><span class="p">]</span>
@@ -1680,9 +1691,6 @@ Average degree:  43.6910
 <span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;off&#39;</span><span class="p">);</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<img alt="../_images/grafy_141_0.png" src="../_images/grafy_141_0.png" />
 </div>
 </div>
 </div>
@@ -1715,24 +1723,14 @@ Average degree:  43.6910
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<img alt="../_images/grafy_144_0.png" src="../_images/grafy_144_0.png" />
 </div>
-</div>
-<p>Zajdujemy teraz maksymalny przepływ między źródłem <span class="math notranslate nohighlight">\(Z\)</span> i ujściem <span class="math notranslate nohighlight">\(U\)</span>:</p>
+<p>Znajdujemy teraz maksymalny przepływ między źródłem <span class="math notranslate nohighlight">\(Z\)</span> i ujściem <span class="math notranslate nohighlight">\(U\)</span>:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">flow_value</span><span class="p">,</span> <span class="n">flow_dict</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">maximum_flow</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="s1">&#39;Z&#39;</span><span class="p">,</span> <span class="s1">&#39;U&#39;</span><span class="p">)</span>  <span class="c1"># maksymalny przepływ</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;maksymalny przepływ:&quot;</span><span class="p">,</span> <span class="n">flow_value</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">flow_dict</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>maksymalny przepływ: 4
-
-{&#39;Z&#39;: {&#39;a&#39;: 2, &#39;b&#39;: 1, &#39;d&#39;: 1}, &#39;a&#39;: {&#39;c&#39;: 2}, &#39;b&#39;: {&#39;c&#39;: 0, &#39;d&#39;: 1}, &#39;d&#39;: {&#39;e&#39;: 2}, &#39;c&#39;: {&#39;U&#39;: 2}, &#39;e&#39;: {&#39;U&#39;: 2, &#39;b&#39;: 0}, &#39;U&#39;: {}}
 </pre></div>
 </div>
 </div>
@@ -1751,7 +1749,7 @@ Average degree:  43.6910
 </div>
 </div>
 </div>
-<p>Możemy teraz narysować sieć z maksymalnym przepływem. Czarne etykiety oznaczają przepustowość krawedzi, a czerwone maksymalny przepływ.</p>
+<p>Następnie rysujemy sieć z maksymalnym przepływem. Czarne etykiety oznaczają przepustowość krawedzi, a czerwone maksymalny przepływ.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">label_fl</span><span class="o">=</span><span class="n">nx</span><span class="o">.</span><span class="n">get_edge_attributes</span><span class="p">(</span><span class="n">F</span><span class="p">,</span><span class="s1">&#39;weight&#39;</span><span class="p">)</span>   <span class="c1"># etykiety maksymalnego przepływu</span>
@@ -1779,9 +1777,6 @@ Average degree:  43.6910
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<img alt="../_images/grafy_150_0.png" src="../_images/grafy_150_0.png" />
-</div>
 </div>
 <p>Znajdziemy teraz minimalny przekrój (por. <strong>tw. [5.31]</strong>):</p>
 <div class="cell docutils container">
@@ -1792,16 +1787,10 @@ Average degree:  43.6910
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(4, ({&#39;a&#39;, &#39;Z&#39;, &#39;c&#39;, &#39;d&#39;, &#39;b&#39;}, {&#39;e&#39;, &#39;U&#39;}))
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># kolory dla wierzchołków</span>
-<span class="n">color_map</span> <span class="o">=</span> <span class="p">[]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">color_map</span> <span class="o">=</span> <span class="p">[]</span>  <span class="c1"># kolory dla wierzchołków</span>
 <span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">G</span><span class="p">:</span>
     <span class="k">if</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">mc</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">]:</span>
         <span class="n">color_map</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;green&#39;</span><span class="p">)</span>
@@ -1819,9 +1808,6 @@ Average degree:  43.6910
 <span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;off&#39;</span><span class="p">);</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<img alt="../_images/grafy_153_0.png" src="../_images/grafy_153_0.png" />
 </div>
 </div>
 <p>Wszystko się zgadza: maksymalny przepływ równa sie minimalnemu przekrojowi!</p>
@@ -1861,7 +1847,7 @@ Average degree:  43.6910
 
 <span class="n">T</span><span class="o">=</span><span class="p">[</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span> <span class="c1"># wierzchołki &quot;terminalowe&quot; (drzewo S z definicji musi je zawierać)</span>
 
-<span class="c1"># drzewo Steinera (uwaga: działa tyko dla grafów nieskierowanych)</span>
+<span class="c1"># drzewo Steinera (uwaga: działa tylko dla grafów nieskierowanych)</span>
 <span class="n">S</span><span class="o">=</span><span class="n">nalg</span><span class="o">.</span><span class="n">steiner_tree</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">T</span> <span class="p">,</span><span class="n">weight</span><span class="o">=</span><span class="s1">&#39;weight&#39;</span><span class="p">)</span>
 
 <span class="c1"># kolory dla wierzchołków terminalowych</span>
@@ -1886,14 +1872,8 @@ Average degree:  43.6910
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>waga drzewa Steinera: 1.8
-</pre></div>
 </div>
-<img alt="../_images/grafy_158_1.png" src="../_images/grafy_158_1.png" />
-</div>
-</div>
-<p>Powyżej widzimy, że drzewo Steinera S (czerwone krawędzie) zawiera wierzchołki terminalowe T (niebieskie) oraz dodatkowy wierzchołek 4. Jest to korzystne, bo droga z 1 do 2 jest krótsza przez 4, gdzie 0.3+0.5=0.8, niż bezpośrednio, gdzie wynosi 1.</p>
+<p>Widzimy, że drzewo Steinera S (czerwone krawędzie) zawiera wierzchołki terminalowe T (niebieskie) oraz dodatkowy wierzchołek 4. Jest to korzystne, bo droga z 1 do 2 jest krótsza prowadząc przez 4, gdzie 0.3+0.5=0.8, niż idąc bezpośrednio, gdzie długość wynosi 1.</p>
 </div>
 <div class="section" id="zadania">
 <h2>Zadania<a class="headerlink" href="#zadania" title="Stały odnośnik do tego nagłówka">¶</a></h2>
@@ -1902,7 +1882,8 @@ Average degree:  43.6910
 <li><p>Znajdź mininalne drzewo spinające grafu <span class="math notranslate nohighlight">\(G\)</span>.</p></li>
 <li><p>Przydziel wagi krawędziom grafu <span class="math notranslate nohighlight">\(G\)</span> i znajdź najkrótszą drogę między wybraną parą wierchołków.</p></li>
 <li><p>Potraktuj wagi krawędzi <span class="math notranslate nohighlight">\(G\)</span> jako przepustowości sieci i znajdź maksymalny przepływ między dwoma wierzchołkami.</p></li>
-<li><p>Zbadaj własności grafu <strong>G = nx.random_geometric_graph(200, d)</strong> w zależności od <span class="math notranslate nohighlight">\(d \in (0,1)\)</span>, tj. spójność, liczbę krawędzi, rozmiar najwiekszej kliki.</p></li>
+<li><p>Zbadaj własności grafu <strong>nx.random_geometric_graph(200, d)</strong> w zależności od <span class="math notranslate nohighlight">\(d \in (0,1)\)</span>, tj. spójność, liczbę krawędzi, rozmiar najwiekszej kliki.</p></li>
+<li><p>Narysuj na kartce paperu sieć (na grafie skierowanym) o kilkunastu wierzchołkach, zadając przepustowości krawędzi. Zastosuj algorytm <strong>nx.maximum_flow</strong> do znalezienia maksymalnego przepływu.</p></li>
 </ol>
 </div>
 </div>
