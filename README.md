@@ -24,6 +24,6 @@ Alternatywnie, klikając na ikonę strzałki w dół, można pobrać kod i wykon
 
 - Jupyter Book: [https://bronwojtek.github.io/matematyka-dyskretna-python/docs/index.html](https://bronwojtek.github.io/matematyka-dyskretna-python/docs/index.html)
 
-- pdf całej książki w tym repozytorium: md_book_covers.pdf (250 stron)
+- pdf całej książki w tym repozytorium: md_book_covers.pdf (350 stron)
 
 - wersje źródłowe programów: [www.ifj.edu.pl/~broniows/md](https://www.ifj.edu.pl/~broniows/md) lub [www.ujk.edu.pl/~broniows/md](https://www.ujk.edu.pl/~broniows/md)
